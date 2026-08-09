@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-09T15:35:21.392Z",
+  "scores": [
+    {
+      "id": "cage-disco-guitar-a",
+      "title": "Cage chorus guitar A - minimal motif",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "png": "scores/cage-disco-guitar-a/score.png",
+      "svg": "scores/cage-disco-guitar-a/score.svg",
+      "musicxml": "scores/cage-disco-guitar-a/score.musicxml"
+    },
+    {
+      "id": "cage-disco-guitar-b",
+      "title": "Cage chorus guitar B - descending answer",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "png": "scores/cage-disco-guitar-b/score.png",
+      "svg": "scores/cage-disco-guitar-b/score.svg",
+      "musicxml": "scores/cage-disco-guitar-b/score.musicxml"
+    },
+    {
+      "id": "cage-disco-guitar-c",
+      "title": "Cage chorus guitar C - chord reactive",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "png": "scores/cage-disco-guitar-c/score.png",
+      "svg": "scores/cage-disco-guitar-c/score.svg",
+      "musicxml": "scores/cage-disco-guitar-c/score.musicxml"
+    },
+    {
+      "id": "cage-disco-guitar-d",
+      "title": "Cage chorus guitar D - sparse percussive stabs",
+      "tempo": 120,
+      "timeSignature": "4/4",
+      "png": "scores/cage-disco-guitar-d/score.png",
+      "svg": "scores/cage-disco-guitar-d/score.svg",
+      "musicxml": "scores/cage-disco-guitar-d/score.musicxml"
+    },
+    {
+      "id": "instrument-layouts-demo",
+      "title": "Instrument layouts demo",
+      "tempo": 84,
+      "timeSignature": "4/4",
+      "png": "scores/instrument-layouts-demo/score.png",
+      "svg": "scores/instrument-layouts-demo/score.svg",
+      "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+    },
+    {
+      "id": "sabah-middle-eight-piano-02-flowing",
+      "title": "Sabah middle 8 — flowing piano",
+      "tempo": 84,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-middle-eight-piano-02-flowing/score.png",
+      "svg": "scores/sabah-middle-eight-piano-02-flowing/score.svg",
+      "musicxml": "scores/sabah-middle-eight-piano-02-flowing/score.musicxml"
+    },
+    {
+      "id": "sabah-middle-eight-piano-03-rhythmic",
+      "title": "Sabah middle 8 — rhythmic piano",
+      "tempo": 84,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-middle-eight-piano-03-rhythmic/score.png",
+      "svg": "scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
+      "musicxml": "scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml"
+    },
+    {
+      "id": "sabah-middle-eight-piano-01-spacious",
+      "title": "Sabah middle 8 — spacious piano",
+      "tempo": 84,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-middle-eight-piano-01-spacious/score.png",
+      "svg": "scores/sabah-middle-eight-piano-01-spacious/score.svg",
+      "musicxml": "scores/sabah-middle-eight-piano-01-spacious/score.musicxml"
+    },
+    {
+      "id": "sabah-mobile-test-001",
+      "title": "Sabah mobile rendering test",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-mobile-test-001/score.png",
+      "svg": "scores/sabah-mobile-test-001/score.svg",
+      "musicxml": "scores/sabah-mobile-test-001/score.musicxml"
+    },
+    {
+      "id": "sabah-piano-chorus-001",
+      "title": "Sabah piano chorus sketch",
+      "tempo": 84,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-piano-chorus-001/score.png",
+      "svg": "scores/sabah-piano-chorus-001/score.svg",
+      "musicxml": "scores/sabah-piano-chorus-001/score.musicxml"
+    },
+    {
+      "id": "sabah-piano-chorus-002",
+      "title": "Sabah piano chorus soul response",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-piano-chorus-002/score.png",
+      "svg": "scores/sabah-piano-chorus-002/score.svg",
+      "musicxml": "scores/sabah-piano-chorus-002/score.musicxml"
+    },
+    {
+      "id": "sabah-piano-chorus-003",
+      "title": "Sabah piano chorus voice leading",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "png": "scores/sabah-piano-chorus-003/score.png",
+      "svg": "scores/sabah-piano-chorus-003/score.svg",
+      "musicxml": "scores/sabah-piano-chorus-003/score.musicxml"
+    }
+  ]
+}
