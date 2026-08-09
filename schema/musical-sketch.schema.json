@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rhzuccarelli.github.io/music_notation/schema/musical-sketch.schema.json",
+  "title": "Musical sketch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "tempo", "timeSignature", "measures"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "tempo": { "type": "integer", "minimum": 20, "maximum": 300 },
+    "timeSignature": { "const": "4/4" },
+    "measures": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/measure" }
+    }
+  },
+  "$defs": {
+    "duration": { "enum": [1, 2, 3, 4, 6, 8, 12, 16] },
+    "pitch": { "type": "string", "pattern": "^[A-G](?:#|b)?[0-8]$" },
+    "rest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "duration"],
+      "properties": {
+        "type": { "const": "rest" },
+        "duration": { "$ref": "#/$defs/duration" }
+      }
+    },
+    "chordEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "notes", "duration"],
+      "properties": {
+        "type": { "const": "chord" },
+        "notes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/pitch" }
+        },
+        "duration": { "$ref": "#/$defs/duration" }
+      }
+    },
+    "measure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chord", "events"],
+      "properties": {
+        "chord": { "type": "string", "pattern": "^[A-G](?:#|b)?(?:maj7|m7|m)?$" },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "oneOf": [{ "$ref": "#/$defs/rest" }, { "$ref": "#/$defs/chordEvent" }] }
+        }
+      }
+    }
+  }
+}
