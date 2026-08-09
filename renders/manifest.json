@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T15:56:22.708Z",
+  "generatedAt": "2026-08-09T16:44:27.497Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "scores": [
     {
@@ -86,6 +86,23 @@
         "png": "scores/instrument-layouts-demo/score.png",
         "svg": "scores/instrument-layouts-demo/score.svg",
         "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+      }
+    },
+    {
+      "id": "sabah-chat-winds-002",
+      "title": "Sabah chat test — trumpet G-A-G with tenor answer",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-chat-winds-002.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-chat-winds-002",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-chat-winds-002/score.png",
+        "svg": "scores/sabah-chat-winds-002/score.svg",
+        "musicxml": "scores/sabah-chat-winds-002/score.musicxml"
       }
     },
     {

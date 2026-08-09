@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T15:56:22.708Z",
+  "generatedAt": "2026-08-09T16:44:27.497Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "byId": {
     "cage-disco-guitar-a": {
@@ -37,6 +37,13 @@
       "svg": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.svg",
       "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.musicxml",
       "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/instrument-layouts-demo.json"
+    },
+    "sabah-chat-winds-002": {
+      "title": "Sabah chat test — trumpet G-A-G with tenor answer",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-002/score.musicxml",
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-chat-winds-002.json"
     },
     "sabah-chat-winds-001": {
       "title": "Sabah chat test — trumpet with tenor third below",
