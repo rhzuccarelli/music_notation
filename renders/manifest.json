@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T22:08:07.341Z",
+  "generatedAt": "2026-08-09T22:16:53.681Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "scores": [
     {
       "id": "cage-chorus-rhodes-piano-001",
-      "title": "Cage chorus — Rhodes + piano",
+      "title": "Cage chorus — two-hand Rhodes + piano",
       "tempo": 110,
       "timeSignature": "4/4",
       "formatVersion": 2,
