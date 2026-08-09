@@ -1,0 +1,18 @@
+{
+  "formatVersion": 2,
+  "id": "cage-disco-guitar-d",
+  "title": "Cage chorus guitar D - sparse percussive stabs",
+  "tempo": 120,
+  "timeSignature": "4/4",
+  "harmony": ["Bm", "D", "Fm7", "E"],
+  "parts": [{
+    "id": "guitar",
+    "instrument": "guitar",
+    "measures": [
+      {"events":[{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"B3","string":2,"fret":0},{"pitch":"E4","string":1,"fret":0}],"duration":1},{"type":"rest","duration":4},{"type":"chord","notes":[{"pitch":"C#4","string":2,"fret":2},{"pitch":"F#4","string":1,"fret":2}],"duration":1},{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"B3","string":2,"fret":0},{"pitch":"E4","string":1,"fret":0}],"duration":1},{"type":"rest","duration":3}]},
+      {"events":[{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"A3","string":3,"fret":2},{"pitch":"D4","string":2,"fret":3}],"duration":1},{"type":"rest","duration":4},{"type":"chord","notes":[{"pitch":"C#4","string":2,"fret":2},{"pitch":"F#4","string":1,"fret":2}],"duration":1},{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"A3","string":3,"fret":2},{"pitch":"D4","string":2,"fret":3}],"duration":1},{"type":"rest","duration":3}]},
+      {"events":[{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"Ab3","string":3,"fret":1},{"pitch":"C4","string":2,"fret":1}],"duration":1},{"type":"rest","duration":4},{"type":"chord","notes":[{"pitch":"C4","string":2,"fret":1},{"pitch":"Eb4","string":2,"fret":4}],"duration":1},{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"Ab3","string":3,"fret":1},{"pitch":"Eb4","string":2,"fret":4}],"duration":1},{"type":"rest","duration":3}]},
+      {"events":[{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"G#3","string":3,"fret":1},{"pitch":"B3","string":2,"fret":0}],"duration":1},{"type":"rest","duration":4},{"type":"chord","notes":[{"pitch":"B3","string":2,"fret":0},{"pitch":"E4","string":1,"fret":0}],"duration":1},{"type":"rest","duration":3},{"type":"chord","notes":[{"pitch":"G#3","string":3,"fret":1},{"pitch":"E4","string":1,"fret":0}],"duration":1},{"type":"rest","duration":3}]}
+    ]
+  }]
+}
