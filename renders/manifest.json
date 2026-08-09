@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-09T22:16:53.681Z",
+  "generatedAt": "2026-08-09T22:19:03.991Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "scores": [
     {
@@ -18,6 +18,23 @@
         "png": "scores/cage-chorus-rhodes-piano-001/score.png",
         "svg": "scores/cage-chorus-rhodes-piano-001/score.svg",
         "musicxml": "scores/cage-chorus-rhodes-piano-001/score.musicxml"
+      }
+    },
+    {
+      "id": "cage-chorus-rhodes-piano-002",
+      "title": "Cage chorus — two-hand Rhodes + piano v2",
+      "tempo": 110,
+      "timeSignature": "4/4",
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-chorus-rhodes-piano-002.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#cage-chorus-rhodes-piano-002",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-002/score.musicxml",
+      "relative": {
+        "png": "scores/cage-chorus-rhodes-piano-002/score.png",
+        "svg": "scores/cage-chorus-rhodes-piano-002/score.svg",
+        "musicxml": "scores/cage-chorus-rhodes-piano-002/score.musicxml"
       }
     },
     {
