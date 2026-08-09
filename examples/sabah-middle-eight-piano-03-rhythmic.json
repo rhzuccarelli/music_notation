@@ -1,0 +1,34 @@
+{
+  "id": "sabah-middle-eight-piano-03-rhythmic",
+  "title": "Sabah middle 8 — rhythmic piano",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "measures": [
+    { "chord": "Bm7", "events": [
+      { "type": "rest", "duration": 2 }, { "type": "chord", "notes": ["A4", "D5", "F#5"], "duration": 2 },
+      { "type": "chord", "notes": ["A4", "D5", "F#5"], "duration": 2 }, { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["D5", "F#5", "A5"], "duration": 2 }, { "type": "rest", "duration": 4 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "rest", "duration": 2 }, { "type": "chord", "notes": ["G4", "C5", "E5"], "duration": 2 },
+      { "type": "chord", "notes": ["G4", "C5", "E5"], "duration": 2 }, { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["C5", "E5", "G5"], "duration": 2 }, { "type": "rest", "duration": 4 }
+    ] },
+    { "chord": "Bm7", "events": [
+      { "type": "rest", "duration": 2 }, { "type": "chord", "notes": ["D4", "F#4", "A4", "B4"], "duration": 2 },
+      { "type": "chord", "notes": ["D4", "F#4", "A4", "B4"], "duration": 2 }, { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["F#4", "A4", "B4", "D5"], "duration": 2 }, { "type": "rest", "duration": 4 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "rest", "duration": 2 }, { "type": "chord", "notes": ["C4", "E4", "G4", "A4"], "duration": 2 },
+      { "type": "chord", "notes": ["C4", "E4", "G4", "A4"], "duration": 2 }, { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["E4", "G4", "A4", "C5"], "duration": 2 }, { "type": "rest", "duration": 4 }
+    ] },
+    { "chord": "D7", "events": [
+      { "type": "chord", "notes": ["C4", "D4", "F#4", "A4"], "duration": 4 },
+      { "type": "chord", "notes": ["C4", "D4", "F#4", "A4"], "duration": 4 },
+      { "type": "chord", "notes": ["C4", "D4", "F#4", "A4"], "duration": 4 },
+      { "type": "chord", "notes": ["C4", "D4", "F#4", "A4"], "duration": 4 }
+    ] }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sabah-middle-eight-piano-01-spacious",
+  "title": "Sabah middle 8 — spacious piano",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "measures": [
+    { "chord": "Bm7", "events": [
+      { "type": "chord", "notes": ["B3", "F#4", "A4", "D5"], "duration": 8 },
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["A4", "D5", "F#5"], "duration": 4 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "chord", "notes": ["A3", "E4", "G4", "C5"], "duration": 8 },
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["G4", "C5", "E5"], "duration": 4 }
+    ] },
+    { "chord": "Bm7", "events": [
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["D4", "F#4", "A4", "B4"], "duration": 8 },
+      { "type": "chord", "notes": ["F#4", "A4", "D5"], "duration": 4 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["C4", "E4", "G4", "A4"], "duration": 8 },
+      { "type": "chord", "notes": ["E4", "G4", "C5"], "duration": 4 }
+    ] },
+    { "chord": "D7", "events": [
+      { "type": "chord", "notes": ["D4", "F#4", "A4", "C5"], "duration": 16 }
+    ] }
+  ]
+}

@@ -57,7 +57,7 @@ function harmonyXml(symbol) {
   if (!match) throw new Error(`Invalid chord symbol: ${symbol}`);
   const [, root, accidental, suffix] = match;
   const alter = accidental === "#" ? 1 : accidental === "b" ? -1 : 0;
-  const kind = suffix === "maj7" ? "major-seventh" : suffix === "m7" ? "minor-seventh" : suffix === "m" ? "minor" : "major";
+  const kind = suffix === "maj7" ? "major-seventh" : suffix === "m7" ? "minor-seventh" : suffix === "7" ? "dominant" : suffix === "m" ? "minor" : "major";
   return `<harmony><root><root-step font-size="8">${root}</root-step>${alter ? `<root-alter font-size="8">${alter}</root-alter>` : ""}</root><kind font-size="8" text="${escapeXml(suffix || "")}">${kind}</kind></harmony>`;
 }
 
