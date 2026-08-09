@@ -1,0 +1,46 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-chat-winds-002",
+  "title": "Sabah chat test — trumpet G-A-G with tenor answer",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Cmaj7", "B", "Em7", "Bm7"],
+  "parts": [
+    {
+      "id": "trumpet",
+      "name": "Trumpet in B-flat",
+      "instrument": "trumpetBb",
+      "measures": [
+        {
+          "events": [
+            { "type": "rest", "duration": 6 },
+            { "type": "chord", "notes": ["G4"], "duration": 2 },
+            { "type": "chord", "notes": ["A4"], "duration": 2 },
+            { "type": "chord", "notes": ["G4"], "duration": 2 },
+            { "type": "rest", "duration": 4 }
+          ]
+        },
+        { "events": [{ "type": "rest", "duration": 16 }] },
+        { "events": [{ "type": "rest", "duration": 16 }] },
+        { "events": [{ "type": "rest", "duration": 16 }] }
+      ]
+    },
+    {
+      "id": "tenor-sax",
+      "name": "Tenor Sax in B-flat",
+      "instrument": "tenorSaxBb",
+      "measures": [
+        {
+          "events": [
+            { "type": "rest", "duration": 12 },
+            { "type": "chord", "notes": ["E4"], "duration": 2 },
+            { "type": "chord", "notes": ["D4"], "duration": 2 }
+          ]
+        },
+        { "events": [{ "type": "rest", "duration": 16 }] },
+        { "events": [{ "type": "rest", "duration": 16 }] },
+        { "events": [{ "type": "rest", "duration": 16 }] }
+      ]
+    }
+  ]
+}
