@@ -1,0 +1,19 @@
+{
+  "name": "music-notation-sketchbook",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.16.0",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node src/build.js",
+    "validate": "node src/validate.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "verovio": "^5.6.0"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "0.1",
+  "id": "sabah-piano-chorus-001",
+  "version": 1,
+  "song": "sabah",
+  "title": "Sabah – Chorus Piano",
+  "description": "Sparse right-hand piano concept for the first four chorus bars.",
+  "status": "candidate",
+  "derivedFrom": null,
+  "score": {
+    "tempo": 95,
+    "key": "G",
+    "meter": { "beats": 4, "beatType": 4 },
+    "divisions": 2,
+    "parts": [
+      {
+        "id": "piano-rh",
+        "name": "Piano RH",
+        "instrument": "piano",
+        "clef": "treble",
+        "measures": [
+          {
+            "number": 1,
+            "harmony": [{ "offset": 0, "symbol": "Cmaj7" }],
+            "events": [
+              { "offset": 5, "duration": 1, "notes": ["E4", "G4", "B4"], "articulations": ["staccato"], "dynamic": "mp" },
+              { "offset": 7, "duration": 1, "notes": ["D#4", "F#4", "B4"], "articulations": ["staccato"] }
+            ]
+          },
+          {
+            "number": 2,
+            "harmony": [{ "offset": 0, "symbol": "B" }],
+            "events": []
+          },
+          {
+            "number": 3,
+            "harmony": [{ "offset": 0, "symbol": "Em7" }],
+            "events": []
+          },
+          {
+            "number": 4,
+            "harmony": [{ "offset": 0, "symbol": "Bm7" }],
+            "events": [
+              { "offset": 2, "duration": 1, "notes": ["D4", "F#4", "A4"], "articulations": ["staccato"] }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rhzuccarelli.github.io/music_notation/schema/musical-idea.schema.json",
+  "title": "Musical idea",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "version", "song", "title", "description", "status", "score"],
+  "properties": {
+    "schemaVersion": { "const": "0.1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "song": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "status": { "enum": ["exploration", "candidate", "approved", "rejected"] },
+    "derivedFrom": { "type": ["string", "null"] },
+    "score": { "$ref": "#/$defs/score" }
+  },
+  "$defs": {
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tempo", "key", "meter", "divisions", "parts"],
+      "properties": {
+        "tempo": { "type": "integer", "minimum": 20, "maximum": 400 },
+        "key": { "type": "string", "pattern": "^[A-G](?:#|b)?(?:m)?$" },
+        "meter": {
+          "type": "object", "additionalProperties": false,
+          "required": ["beats", "beatType"],
+          "properties": {
+            "beats": { "type": "integer", "minimum": 1 },
+            "beatType": { "enum": [1, 2, 4, 8, 16] }
+          }
+        },
+        "divisions": { "type": "integer", "minimum": 1 },
+        "parts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/part" } }
+      }
+    },
+    "part": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "instrument", "clef", "measures"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "instrument": { "type": "string", "minLength": 1 },
+        "clef": { "enum": ["treble", "bass"] },
+        "measures": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/measure" } }
+      }
+    },
+    "measure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["number", "harmony", "events"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "harmony": { "type": "array", "items": { "$ref": "#/$defs/harmony" } },
+        "events": { "type": "array", "items": { "$ref": "#/$defs/event" } }
+      }
+    },
+    "harmony": {
+      "type": "object", "additionalProperties": false,
+      "required": ["offset", "symbol"],
+      "properties": {
+        "offset": { "type": "integer", "minimum": 0 },
+        "symbol": { "type": "string", "pattern": "^[A-G](?:#|b)?(?:maj7|m7|m|7|dim|aug)?$" }
+      }
+    },
+    "event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["offset", "duration", "notes"],
+      "properties": {
+        "offset": { "type": "integer", "minimum": 0 },
+        "duration": { "type": "integer", "minimum": 1 },
+        "notes": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "string", "pattern": "^[A-G](?:#|b)?[0-9]$" }
+        },
+        "tie": { "enum": ["start", "stop", "continue"] },
+        "articulations": {
+          "type": "array", "uniqueItems": true,
+          "items": { "enum": ["staccato", "accent", "tenuto", "marcato"] }
+        },
+        "dynamic": { "enum": ["pp", "p", "mp", "mf", "f", "ff"] }
+      }
+    }
+  }
+}
