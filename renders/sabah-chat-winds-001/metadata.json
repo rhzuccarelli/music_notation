@@ -1,0 +1,17 @@
+{
+  "id": "sabah-chat-winds-001",
+  "title": "Sabah chat test — trumpet with tenor third below",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-chat-winds-001.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-chat-winds-001",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-chat-winds-001/score.png",
+    "svg": "scores/sabah-chat-winds-001/score.svg",
+    "musicxml": "scores/sabah-chat-winds-001/score.musicxml"
+  }
+}

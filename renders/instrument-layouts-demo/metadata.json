@@ -1,0 +1,17 @@
+{
+  "id": "instrument-layouts-demo",
+  "title": "Instrument layouts demo",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/instrument-layouts-demo.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#instrument-layouts-demo",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.musicxml",
+  "relative": {
+    "png": "scores/instrument-layouts-demo/score.png",
+    "svg": "scores/instrument-layouts-demo/score.svg",
+    "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+  }
+}

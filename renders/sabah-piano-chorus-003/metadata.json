@@ -1,0 +1,17 @@
+{
+  "id": "sabah-piano-chorus-003",
+  "title": "Sabah piano chorus voice leading",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "formatVersion": 1,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-piano-chorus-003.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-piano-chorus-003",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-piano-chorus-003/score.png",
+    "svg": "scores/sabah-piano-chorus-003/score.svg",
+    "musicxml": "scores/sabah-piano-chorus-003/score.musicxml"
+  }
+}

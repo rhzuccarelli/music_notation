@@ -1,0 +1,17 @@
+{
+  "id": "sabah-middle-eight-piano-01-spacious",
+  "title": "Sabah middle 8 — spacious piano",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "formatVersion": 1,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-middle-eight-piano-01-spacious.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-middle-eight-piano-01-spacious",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-middle-eight-piano-01-spacious/score.png",
+    "svg": "scores/sabah-middle-eight-piano-01-spacious/score.svg",
+    "musicxml": "scores/sabah-middle-eight-piano-01-spacious/score.musicxml"
+  }
+}

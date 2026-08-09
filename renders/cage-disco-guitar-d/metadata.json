@@ -1,0 +1,17 @@
+{
+  "id": "cage-disco-guitar-d",
+  "title": "Cage chorus guitar D - sparse percussive stabs",
+  "tempo": 120,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-d.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-d",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.musicxml",
+  "relative": {
+    "png": "scores/cage-disco-guitar-d/score.png",
+    "svg": "scores/cage-disco-guitar-d/score.svg",
+    "musicxml": "scores/cage-disco-guitar-d/score.musicxml"
+  }
+}

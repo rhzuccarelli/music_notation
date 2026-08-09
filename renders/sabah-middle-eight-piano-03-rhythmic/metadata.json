@@ -1,0 +1,17 @@
+{
+  "id": "sabah-middle-eight-piano-03-rhythmic",
+  "title": "Sabah middle 8 — rhythmic piano",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "formatVersion": 1,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-middle-eight-piano-03-rhythmic.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-middle-eight-piano-03-rhythmic",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-middle-eight-piano-03-rhythmic/score.png",
+    "svg": "scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
+    "musicxml": "scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml"
+  }
+}

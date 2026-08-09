@@ -1,123 +1,228 @@
 {
-  "version": 1,
-  "generatedAt": "2026-08-09T15:37:15.023Z",
+  "version": 2,
+  "generatedAt": "2026-08-09T15:42:54.205Z",
+  "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "scores": [
     {
       "id": "cage-disco-guitar-a",
       "title": "Cage chorus guitar A - minimal motif",
       "tempo": 120,
       "timeSignature": "4/4",
-      "png": "scores/cage-disco-guitar-a/score.png",
-      "svg": "scores/cage-disco-guitar-a/score.svg",
-      "musicxml": "scores/cage-disco-guitar-a/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-a.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-a",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.musicxml",
+      "relative": {
+        "png": "scores/cage-disco-guitar-a/score.png",
+        "svg": "scores/cage-disco-guitar-a/score.svg",
+        "musicxml": "scores/cage-disco-guitar-a/score.musicxml"
+      }
     },
     {
       "id": "cage-disco-guitar-b",
       "title": "Cage chorus guitar B - descending answer",
       "tempo": 120,
       "timeSignature": "4/4",
-      "png": "scores/cage-disco-guitar-b/score.png",
-      "svg": "scores/cage-disco-guitar-b/score.svg",
-      "musicxml": "scores/cage-disco-guitar-b/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-b.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-b",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.musicxml",
+      "relative": {
+        "png": "scores/cage-disco-guitar-b/score.png",
+        "svg": "scores/cage-disco-guitar-b/score.svg",
+        "musicxml": "scores/cage-disco-guitar-b/score.musicxml"
+      }
     },
     {
       "id": "cage-disco-guitar-c",
       "title": "Cage chorus guitar C - chord reactive",
       "tempo": 120,
       "timeSignature": "4/4",
-      "png": "scores/cage-disco-guitar-c/score.png",
-      "svg": "scores/cage-disco-guitar-c/score.svg",
-      "musicxml": "scores/cage-disco-guitar-c/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-c.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-c",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-c/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-c/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-c/score.musicxml",
+      "relative": {
+        "png": "scores/cage-disco-guitar-c/score.png",
+        "svg": "scores/cage-disco-guitar-c/score.svg",
+        "musicxml": "scores/cage-disco-guitar-c/score.musicxml"
+      }
     },
     {
       "id": "cage-disco-guitar-d",
       "title": "Cage chorus guitar D - sparse percussive stabs",
       "tempo": 120,
       "timeSignature": "4/4",
-      "png": "scores/cage-disco-guitar-d/score.png",
-      "svg": "scores/cage-disco-guitar-d/score.svg",
-      "musicxml": "scores/cage-disco-guitar-d/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-d.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-d",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-d/score.musicxml",
+      "relative": {
+        "png": "scores/cage-disco-guitar-d/score.png",
+        "svg": "scores/cage-disco-guitar-d/score.svg",
+        "musicxml": "scores/cage-disco-guitar-d/score.musicxml"
+      }
     },
     {
       "id": "instrument-layouts-demo",
       "title": "Instrument layouts demo",
       "tempo": 84,
       "timeSignature": "4/4",
-      "png": "scores/instrument-layouts-demo/score.png",
-      "svg": "scores/instrument-layouts-demo/score.svg",
-      "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/instrument-layouts-demo.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#instrument-layouts-demo",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/instrument-layouts-demo/score.musicxml",
+      "relative": {
+        "png": "scores/instrument-layouts-demo/score.png",
+        "svg": "scores/instrument-layouts-demo/score.svg",
+        "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+      }
     },
     {
       "id": "sabah-chat-winds-001",
       "title": "Sabah chat test — trumpet with tenor third below",
       "tempo": 95,
       "timeSignature": "4/4",
-      "png": "scores/sabah-chat-winds-001/score.png",
-      "svg": "scores/sabah-chat-winds-001/score.svg",
-      "musicxml": "scores/sabah-chat-winds-001/score.musicxml"
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-chat-winds-001.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-chat-winds-001",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-chat-winds-001/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-chat-winds-001/score.png",
+        "svg": "scores/sabah-chat-winds-001/score.svg",
+        "musicxml": "scores/sabah-chat-winds-001/score.musicxml"
+      }
     },
     {
       "id": "sabah-middle-eight-piano-02-flowing",
       "title": "Sabah middle 8 — flowing piano",
       "tempo": 84,
       "timeSignature": "4/4",
-      "png": "scores/sabah-middle-eight-piano-02-flowing/score.png",
-      "svg": "scores/sabah-middle-eight-piano-02-flowing/score.svg",
-      "musicxml": "scores/sabah-middle-eight-piano-02-flowing/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-middle-eight-piano-02-flowing.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-middle-eight-piano-02-flowing",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-02-flowing/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-02-flowing/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-02-flowing/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-middle-eight-piano-02-flowing/score.png",
+        "svg": "scores/sabah-middle-eight-piano-02-flowing/score.svg",
+        "musicxml": "scores/sabah-middle-eight-piano-02-flowing/score.musicxml"
+      }
     },
     {
       "id": "sabah-middle-eight-piano-03-rhythmic",
       "title": "Sabah middle 8 — rhythmic piano",
       "tempo": 84,
       "timeSignature": "4/4",
-      "png": "scores/sabah-middle-eight-piano-03-rhythmic/score.png",
-      "svg": "scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
-      "musicxml": "scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-middle-eight-piano-03-rhythmic.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-middle-eight-piano-03-rhythmic",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-middle-eight-piano-03-rhythmic/score.png",
+        "svg": "scores/sabah-middle-eight-piano-03-rhythmic/score.svg",
+        "musicxml": "scores/sabah-middle-eight-piano-03-rhythmic/score.musicxml"
+      }
     },
     {
       "id": "sabah-middle-eight-piano-01-spacious",
       "title": "Sabah middle 8 — spacious piano",
       "tempo": 84,
       "timeSignature": "4/4",
-      "png": "scores/sabah-middle-eight-piano-01-spacious/score.png",
-      "svg": "scores/sabah-middle-eight-piano-01-spacious/score.svg",
-      "musicxml": "scores/sabah-middle-eight-piano-01-spacious/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-middle-eight-piano-01-spacious.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-middle-eight-piano-01-spacious",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-middle-eight-piano-01-spacious/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-middle-eight-piano-01-spacious/score.png",
+        "svg": "scores/sabah-middle-eight-piano-01-spacious/score.svg",
+        "musicxml": "scores/sabah-middle-eight-piano-01-spacious/score.musicxml"
+      }
     },
     {
       "id": "sabah-mobile-test-001",
       "title": "Sabah mobile rendering test",
       "tempo": 95,
       "timeSignature": "4/4",
-      "png": "scores/sabah-mobile-test-001/score.png",
-      "svg": "scores/sabah-mobile-test-001/score.svg",
-      "musicxml": "scores/sabah-mobile-test-001/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-mobile-test-001.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-mobile-test-001",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-mobile-test-001/score.png",
+        "svg": "scores/sabah-mobile-test-001/score.svg",
+        "musicxml": "scores/sabah-mobile-test-001/score.musicxml"
+      }
     },
     {
       "id": "sabah-piano-chorus-001",
       "title": "Sabah piano chorus sketch",
       "tempo": 84,
       "timeSignature": "4/4",
-      "png": "scores/sabah-piano-chorus-001/score.png",
-      "svg": "scores/sabah-piano-chorus-001/score.svg",
-      "musicxml": "scores/sabah-piano-chorus-001/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-piano-chorus-001.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-piano-chorus-001",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-001/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-piano-chorus-001/score.png",
+        "svg": "scores/sabah-piano-chorus-001/score.svg",
+        "musicxml": "scores/sabah-piano-chorus-001/score.musicxml"
+      }
     },
     {
       "id": "sabah-piano-chorus-002",
       "title": "Sabah piano chorus soul response",
       "tempo": 95,
       "timeSignature": "4/4",
-      "png": "scores/sabah-piano-chorus-002/score.png",
-      "svg": "scores/sabah-piano-chorus-002/score.svg",
-      "musicxml": "scores/sabah-piano-chorus-002/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-piano-chorus-002.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-piano-chorus-002",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-002/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-piano-chorus-002/score.png",
+        "svg": "scores/sabah-piano-chorus-002/score.svg",
+        "musicxml": "scores/sabah-piano-chorus-002/score.musicxml"
+      }
     },
     {
       "id": "sabah-piano-chorus-003",
       "title": "Sabah piano chorus voice leading",
       "tempo": 95,
       "timeSignature": "4/4",
-      "png": "scores/sabah-piano-chorus-003/score.png",
-      "svg": "scores/sabah-piano-chorus-003/score.svg",
-      "musicxml": "scores/sabah-piano-chorus-003/score.musicxml"
+      "formatVersion": 1,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-piano-chorus-003.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-piano-chorus-003",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-piano-chorus-003/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-piano-chorus-003/score.png",
+        "svg": "scores/sabah-piano-chorus-003/score.svg",
+        "musicxml": "scores/sabah-piano-chorus-003/score.musicxml"
+      }
     }
   ]
 }

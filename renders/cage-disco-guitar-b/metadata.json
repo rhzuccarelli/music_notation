@@ -1,0 +1,17 @@
+{
+  "id": "cage-disco-guitar-b",
+  "title": "Cage chorus guitar B - descending answer",
+  "tempo": 120,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-b.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-b",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-b/score.musicxml",
+  "relative": {
+    "png": "scores/cage-disco-guitar-b/score.png",
+    "svg": "scores/cage-disco-guitar-b/score.svg",
+    "musicxml": "scores/cage-disco-guitar-b/score.musicxml"
+  }
+}

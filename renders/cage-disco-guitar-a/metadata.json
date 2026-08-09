@@ -1,0 +1,17 @@
+{
+  "id": "cage-disco-guitar-a",
+  "title": "Cage chorus guitar A - minimal motif",
+  "tempo": 120,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-disco-guitar-a.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#cage-disco-guitar-a",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.musicxml",
+  "relative": {
+    "png": "scores/cage-disco-guitar-a/score.png",
+    "svg": "scores/cage-disco-guitar-a/score.svg",
+    "musicxml": "scores/cage-disco-guitar-a/score.musicxml"
+  }
+}

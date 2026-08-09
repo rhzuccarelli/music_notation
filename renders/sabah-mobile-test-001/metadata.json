@@ -1,0 +1,17 @@
+{
+  "id": "sabah-mobile-test-001",
+  "title": "Sabah mobile rendering test",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "formatVersion": 1,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-mobile-test-001.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-mobile-test-001",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-mobile-test-001/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-mobile-test-001/score.png",
+    "svg": "scores/sabah-mobile-test-001/score.svg",
+    "musicxml": "scores/sabah-mobile-test-001/score.musicxml"
+  }
+}
