@@ -1,0 +1,17 @@
+{
+  "id": "cage-chorus-rhodes-piano-003",
+  "title": "Cage chorus — anticipated Rhodes + piano v003",
+  "tempo": 110,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-chorus-rhodes-piano-003.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#cage-chorus-rhodes-piano-003",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-003/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-003/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-003/score.musicxml",
+  "relative": {
+    "png": "scores/cage-chorus-rhodes-piano-003/score.png",
+    "svg": "scores/cage-chorus-rhodes-piano-003/score.svg",
+    "musicxml": "scores/cage-chorus-rhodes-piano-003/score.musicxml"
+  }
+}
