@@ -62,18 +62,20 @@ function attributes(inst) {
   return `<attributes>${base}<clef><sign>${inst.clef[0]}</sign><line>${inst.clef[1]}</line></clef>${tr}</attributes>`;
 }
 
-function partXml(part, score) {
+function partXml(part, score, showDirections = false) {
   const inst=INSTRUMENTS[part.instrument];
   return part.measures.map((m,i)=>{
-    const a=i===0?attributes(inst):""; const tempo=i===0?`<direction><direction-type><words>♩ = ${score.tempo}</words></direction-type><sound tempo="${score.tempo}"/></direction>`:"";
-    if(inst.layout==="piano") return `<measure number="${i+1}">${a}${tempo}${i===0||m.chord?harmony(m.chord||score.harmony[i]):""}${m.treble.map(e=>eventXml(e,{staff:1,voice:1})).join("")}<backup><duration>16</duration></backup>${m.bass.map(e=>eventXml(e,{staff:2,voice:2})).join("")}</measure>`;
-    if(inst.layout==="tab") { const ev=m.events; return `<measure number="${i+1}">${a}${tempo}${harmony(m.chord||score.harmony[i])}${ev.map(e=>eventXml(e,{staff:1,voice:1,shift:inst.writtenShift})).join("")}<backup><duration>16</duration></backup>${ev.map(e=>eventXml(e,{staff:2,voice:2,shift:inst.writtenShift,tab:true,strings:inst.strings})).join("")}</measure>`; }
-    return `<measure number="${i+1}">${a}${tempo}${harmony(m.chord||score.harmony[i])}${m.events.map(e=>eventXml(e,{shift:inst.writtenShift})).join("")}</measure>`;
+    const a=i===0?attributes(inst):"";
+    const tempo=showDirections&&i===0?`<direction><direction-type><words>♩ = ${score.tempo}</words></direction-type><sound tempo="${score.tempo}"/></direction>`:"";
+    const chord=showDirections?harmony(m.chord||score.harmony[i]):"";
+    if(inst.layout==="piano") return `<measure number="${i+1}">${a}${tempo}${chord}${m.treble.map(e=>eventXml(e,{staff:1,voice:1})).join("")}<backup><duration>16</duration></backup>${m.bass.map(e=>eventXml(e,{staff:2,voice:2})).join("")}</measure>`;
+    if(inst.layout==="tab") { const ev=m.events; return `<measure number="${i+1}">${a}${tempo}${chord}${ev.map(e=>eventXml(e,{staff:1,voice:1,shift:inst.writtenShift})).join("")}<backup><duration>16</duration></backup>${ev.map(e=>eventXml(e,{staff:2,voice:2,shift:inst.writtenShift,tab:true,strings:inst.strings})).join("")}</measure>`; }
+    return `<measure number="${i+1}">${a}${tempo}${chord}${m.events.map(e=>eventXml(e,{shift:inst.writtenShift})).join("")}</measure>`;
   }).join("");
 }
 
 export function ensembleToMusicXml(score) {
   const list=score.parts.map((p,i)=>`<score-part id="P${i+1}"><part-name>${esc(p.name||INSTRUMENTS[p.instrument].name)}</part-name></score-part>`).join("");
-  const parts=score.parts.map((p,i)=>`<part id="P${i+1}">${partXml(p,score)}</part>`).join("");
+  const parts=score.parts.map((p,i)=>`<part id="P${i+1}">${partXml(p,score,i===0)}</part>`).join("");
   return `<?xml version="1.0" encoding="UTF-8"?><score-partwise version="4.0"><work><work-title>${esc(score.title)}</work-title></work><part-list>${list}</part-list>${parts}</score-partwise>`;
 }

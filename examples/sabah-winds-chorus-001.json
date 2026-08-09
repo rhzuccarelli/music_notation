@@ -1,0 +1,49 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-winds-chorus-001",
+  "title": "Sabah chorus — Winds 1: Soul call-and-response",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Cmaj7", "B", "Em7", "Bm7", "Am7", "Bm7", "Cmaj7", "D7"],
+  "parts": [
+    {
+      "id": "trumpet", "name": "Trumpet in B-flat", "instrument": "trumpetBb",
+      "measures": [
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["B4"],"duration":2},{"type":"chord","notes":["E5"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["D#5"],"duration":2},{"type":"chord","notes":["B4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["B4"],"duration":2},{"type":"chord","notes":["D5"],"duration":4}] },
+        { "events": [{"type":"rest","duration":12},{"type":"chord","notes":["A4"],"duration":2},{"type":"chord","notes":["F#4"],"duration":2}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["E4"],"duration":2},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["C5"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["A4"],"duration":2},{"type":"chord","notes":["D5"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["B4"],"duration":2},{"type":"chord","notes":["D5"],"duration":2},{"type":"chord","notes":["E5"],"duration":2},{"type":"rest","duration":2}] },
+        { "events": [{"type":"rest","duration":6},{"type":"chord","notes":["A4"],"duration":2},{"type":"chord","notes":["C5"],"duration":2},{"type":"chord","notes":["A4"],"duration":2},{"type":"chord","notes":["F#4"],"duration":4}] }
+      ]
+    },
+    {
+      "id": "tenor-sax", "name": "Tenor Sax in B-flat", "instrument": "tenorSaxBb",
+      "measures": [
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["E4"],"duration":2},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["B4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["D#4"],"duration":2},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["D#4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["E4"],"duration":2},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["B4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":12},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["D4"],"duration":2}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["C4"],"duration":2},{"type":"chord","notes":["E4"],"duration":2},{"type":"chord","notes":["G4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["D4"],"duration":2},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["A4"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["G4"],"duration":2},{"type":"chord","notes":["B4"],"duration":2},{"type":"chord","notes":["C5"],"duration":2},{"type":"rest","duration":2}] },
+        { "events": [{"type":"rest","duration":6},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["A4"],"duration":2},{"type":"chord","notes":["F#4"],"duration":2},{"type":"chord","notes":["C4"],"duration":4}] }
+      ]
+    },
+    {
+      "id": "trombone", "name": "Trombone", "instrument": "trombone",
+      "measures": [
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["C3"],"duration":2},{"type":"chord","notes":["E3"],"duration":2},{"type":"chord","notes":["G3"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["B2"],"duration":2},{"type":"chord","notes":["D#3"],"duration":2},{"type":"chord","notes":["F#3"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["E3"],"duration":2},{"type":"chord","notes":["G3"],"duration":2},{"type":"chord","notes":["D3"],"duration":4}] },
+        { "events": [{"type":"rest","duration":12},{"type":"chord","notes":["D3"],"duration":2},{"type":"chord","notes":["B2"],"duration":2}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["A2"],"duration":2},{"type":"chord","notes":["C3"],"duration":2},{"type":"chord","notes":["E3"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["B2"],"duration":2},{"type":"chord","notes":["D3"],"duration":2},{"type":"chord","notes":["F#3"],"duration":4}] },
+        { "events": [{"type":"rest","duration":8},{"type":"chord","notes":["C3"],"duration":2},{"type":"chord","notes":["E3"],"duration":2},{"type":"chord","notes":["G3"],"duration":2},{"type":"rest","duration":2}] },
+        { "events": [{"type":"rest","duration":6},{"type":"chord","notes":["D3"],"duration":2},{"type":"chord","notes":["F#3"],"duration":2},{"type":"chord","notes":["D3"],"duration":2},{"type":"chord","notes":["D3"],"duration":4}] }
+      ]
+    }
+  ]
+}

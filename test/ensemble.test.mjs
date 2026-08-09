@@ -17,3 +17,9 @@ test("writes piano grand staff, transpositions, and TAB", () => {
   assert.match(xml, /<sign>TAB<\/sign>/);
   assert.match(xml, /<string>5<\/string><fret>3<\/fret>/);
 });
+
+test("prints shared tempo and harmony once above the conductor score", () => {
+  const xml = ensembleToMusicXml(demo);
+  assert.equal(xml.match(/<harmony>/g)?.length, demo.harmony.length);
+  assert.equal(xml.match(/<sound tempo=/g)?.length, 1);
+});

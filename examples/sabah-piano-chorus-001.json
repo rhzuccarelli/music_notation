@@ -1,27 +1,57 @@
 {
   "id": "sabah-piano-chorus-001",
-  "title": "Sabah piano chorus sketch",
-  "tempo": 84,
+  "title": "Sabah chorus — Piano 1: Airy offbeats",
+  "tempo": 95,
   "timeSignature": "4/4",
   "measures": [
-    {
-      "chord": "Cmaj7",
-      "events": [
-        { "type": "rest", "duration": 6 },
-        { "type": "chord", "notes": ["E4", "G4", "B4"], "duration": 2 },
-        { "type": "rest", "duration": 6 },
-        { "type": "chord", "notes": ["D#4", "F#4", "B4"], "duration": 2 }
-      ]
-    },
-    { "chord": "B", "events": [{ "type": "rest", "duration": 16 }] },
-    { "chord": "Em7", "events": [{ "type": "rest", "duration": 16 }] },
-    {
-      "chord": "Bm7",
-      "events": [
-        { "type": "rest", "duration": 4 },
-        { "type": "chord", "notes": ["D4", "F#4", "A4"], "duration": 4 },
-        { "type": "rest", "duration": 8 }
-      ]
-    }
+    { "chord": "Cmaj7", "events": [
+      { "type": "rest", "duration": 6 },
+      { "type": "chord", "notes": ["E4", "G4", "B4"], "duration": 2 },
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["G4", "B4", "E5"], "duration": 2 },
+      { "type": "rest", "duration": 2 }
+    ] },
+    { "chord": "B", "events": [
+      { "type": "rest", "duration": 6 },
+      { "type": "chord", "notes": ["D#4", "F#4", "B4"], "duration": 2 },
+      { "type": "rest", "duration": 8 }
+    ] },
+    { "chord": "Em7", "events": [
+      { "type": "rest", "duration": 8 },
+      { "type": "chord", "notes": ["D4", "G4", "B4"], "duration": 2 },
+      { "type": "rest", "duration": 2 },
+      { "type": "chord", "notes": ["E4", "G4", "B4"], "duration": 2 },
+      { "type": "rest", "duration": 2 }
+    ] },
+    { "chord": "Bm7", "events": [
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["D4", "F#4", "A4"], "duration": 2 },
+      { "type": "rest", "duration": 8 },
+      { "type": "rest", "duration": 2 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "rest", "duration": 6 },
+      { "type": "chord", "notes": ["C4", "E4", "G4"], "duration": 2 },
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["E4", "G4", "C5"], "duration": 2 },
+      { "type": "rest", "duration": 2 }
+    ] },
+    { "chord": "Bm7", "events": [
+      { "type": "rest", "duration": 8 },
+      { "type": "chord", "notes": ["D4", "F#4", "A4"], "duration": 2 },
+      { "type": "rest", "duration": 6 }
+    ] },
+    { "chord": "Cmaj7", "events": [
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["E4", "G4", "B4"], "duration": 4 },
+      { "type": "rest", "duration": 8 }
+    ] },
+    { "chord": "D7", "events": [
+      { "type": "rest", "duration": 6 },
+      { "type": "chord", "notes": ["C4", "F#4", "A4"], "duration": 2 },
+      { "type": "rest", "duration": 4 },
+      { "type": "chord", "notes": ["F#4", "A4", "D5"], "duration": 2 },
+      { "type": "rest", "duration": 2 }
+    ] }
   ]
 }
