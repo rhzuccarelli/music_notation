@@ -1,0 +1,54 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-chat-winds-001",
+  "title": "Sabah chat test — trumpet with tenor third below",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Cmaj7", "B", "Em7", "Bm7"],
+  "parts": [
+    {
+      "id": "trumpet",
+      "name": "Trumpet in B-flat",
+      "instrument": "trumpetBb",
+      "measures": [
+        { "events": [
+          { "type": "rest", "duration": 4 },
+          { "type": "chord", "notes": ["E5"], "duration": 12 }
+        ] },
+        { "events": [
+          { "type": "chord", "notes": ["D#5"], "duration": 12 },
+          { "type": "rest", "duration": 4 }
+        ] },
+        { "events": [
+          { "type": "rest", "duration": 4 },
+          { "type": "chord", "notes": ["E5"], "duration": 12 }
+        ] },
+        { "events": [
+          { "type": "rest", "duration": 16 }
+        ] }
+      ]
+    },
+    {
+      "id": "tenor-sax",
+      "name": "Tenor Sax in B-flat",
+      "instrument": "tenorSaxBb",
+      "measures": [
+        { "events": [
+          { "type": "rest", "duration": 4 },
+          { "type": "chord", "notes": ["C5"], "duration": 12 }
+        ] },
+        { "events": [
+          { "type": "chord", "notes": ["B4"], "duration": 12 },
+          { "type": "rest", "duration": 4 }
+        ] },
+        { "events": [
+          { "type": "rest", "duration": 4 },
+          { "type": "chord", "notes": ["C5"], "duration": 12 }
+        ] },
+        { "events": [
+          { "type": "rest", "duration": 16 }
+        ] }
+      ]
+    }
+  ]
+}
