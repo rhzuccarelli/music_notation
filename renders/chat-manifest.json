@@ -1,8 +1,15 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T16:44:27.497Z",
+  "generatedAt": "2026-08-09T22:08:07.341Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "byId": {
+    "cage-chorus-rhodes-piano-001": {
+      "title": "Cage chorus — Rhodes + piano",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/cage-chorus-rhodes-piano-001/score.musicxml",
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/cage-chorus-rhodes-piano-001.json"
+    },
     "cage-disco-guitar-a": {
       "title": "Cage chorus guitar A - minimal motif",
       "png": "https://rhzuccarelli.github.io/music_notation/scores/cage-disco-guitar-a/score.png",
