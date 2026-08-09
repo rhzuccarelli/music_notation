@@ -35,7 +35,8 @@
       "events": [
         { "type": "rest", "duration": 4 },
         { "type": "chord", "notes": ["D4", "F#4", "A4"], "duration": 2 },
-        { "type": "rest", "duration": 10 }
+        { "type": "rest", "duration": 8 },
+        { "type": "rest", "duration": 2 }
       ]
     }
   ]
