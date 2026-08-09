@@ -1,0 +1,38 @@
+{
+  "id": "sabah-middle-eight-piano-02-flowing",
+  "title": "Sabah middle 8 — flowing piano",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "measures": [
+    { "chord": "Bm7", "events": [
+      { "type": "chord", "notes": ["B3"], "duration": 2 }, { "type": "chord", "notes": ["F#4"], "duration": 2 },
+      { "type": "chord", "notes": ["A4"], "duration": 2 }, { "type": "chord", "notes": ["D5"], "duration": 2 },
+      { "type": "chord", "notes": ["F#5"], "duration": 2 }, { "type": "chord", "notes": ["D5"], "duration": 2 },
+      { "type": "chord", "notes": ["A4"], "duration": 2 }, { "type": "chord", "notes": ["F#4"], "duration": 2 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "chord", "notes": ["A3"], "duration": 2 }, { "type": "chord", "notes": ["E4"], "duration": 2 },
+      { "type": "chord", "notes": ["G4"], "duration": 2 }, { "type": "chord", "notes": ["C5"], "duration": 2 },
+      { "type": "chord", "notes": ["E5"], "duration": 2 }, { "type": "chord", "notes": ["C5"], "duration": 2 },
+      { "type": "chord", "notes": ["G4"], "duration": 2 }, { "type": "chord", "notes": ["E4"], "duration": 2 }
+    ] },
+    { "chord": "Bm7", "events": [
+      { "type": "chord", "notes": ["B3"], "duration": 2 }, { "type": "chord", "notes": ["F#4"], "duration": 2 },
+      { "type": "chord", "notes": ["A4"], "duration": 2 }, { "type": "chord", "notes": ["D5"], "duration": 2 },
+      { "type": "chord", "notes": ["A5"], "duration": 2 }, { "type": "chord", "notes": ["F#5"], "duration": 2 },
+      { "type": "chord", "notes": ["D5"], "duration": 2 }, { "type": "chord", "notes": ["A4"], "duration": 2 }
+    ] },
+    { "chord": "Am7", "events": [
+      { "type": "chord", "notes": ["A3"], "duration": 2 }, { "type": "chord", "notes": ["E4"], "duration": 2 },
+      { "type": "chord", "notes": ["G4"], "duration": 2 }, { "type": "chord", "notes": ["C5"], "duration": 2 },
+      { "type": "chord", "notes": ["G5"], "duration": 2 }, { "type": "chord", "notes": ["E5"], "duration": 2 },
+      { "type": "chord", "notes": ["C5"], "duration": 2 }, { "type": "chord", "notes": ["G4"], "duration": 2 }
+    ] },
+    { "chord": "D7", "events": [
+      { "type": "chord", "notes": ["D4"], "duration": 2 }, { "type": "chord", "notes": ["A4"], "duration": 2 },
+      { "type": "chord", "notes": ["C5"], "duration": 2 }, { "type": "chord", "notes": ["F#5"], "duration": 2 },
+      { "type": "chord", "notes": ["A5"], "duration": 2 }, { "type": "chord", "notes": ["F#5"], "duration": 2 },
+      { "type": "chord", "notes": ["D5"], "duration": 2 }, { "type": "chord", "notes": ["C5"], "duration": 2 }
+    ] }
+  ]
+}

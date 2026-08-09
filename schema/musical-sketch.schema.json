@@ -48,7 +48,7 @@
       "additionalProperties": false,
       "required": ["chord", "events"],
       "properties": {
-        "chord": { "type": "string", "pattern": "^[A-G](?:#|b)?(?:maj7|m7|m)?$" },
+        "chord": { "type": "string", "pattern": "^[A-G](?:#|b)?(?:maj7|m7|7|m)?$" },
         "events": {
           "type": "array",
           "minItems": 1,

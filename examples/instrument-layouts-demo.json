@@ -1,0 +1,37 @@
+{
+  "formatVersion": 2,
+  "id": "instrument-layouts-demo",
+  "title": "Instrument layouts demo",
+  "tempo": 84,
+  "timeSignature": "4/4",
+  "harmony": ["Cmaj7"],
+  "parts": [
+    { "id": "piano", "instrument": "piano", "measures": [
+      { "treble": [{ "type": "chord", "notes": ["C4", "E4", "G4", "B4"], "duration": 16 }],
+        "bass": [{ "type": "chord", "notes": ["C2", "G2", "C3"], "duration": 16 }] }
+    ] },
+    { "id": "trumpet", "instrument": "trumpetBb", "measures": [
+      { "events": [{ "type": "chord", "notes": ["G4"], "duration": 16 }] }
+    ] },
+    { "id": "trombone", "instrument": "trombone", "measures": [
+      { "events": [{ "type": "chord", "notes": ["C3"], "duration": 16 }] }
+    ] },
+    { "id": "alto-sax", "instrument": "altoSaxEb", "measures": [
+      { "events": [{ "type": "chord", "notes": ["E4"], "duration": 16 }] }
+    ] },
+    { "id": "tenor-sax", "instrument": "tenorSaxBb", "measures": [
+      { "events": [{ "type": "chord", "notes": ["G3"], "duration": 16 }] }
+    ] },
+    { "id": "guitar", "instrument": "guitar", "measures": [
+      { "events": [{ "type": "chord", "notes": [
+        { "pitch": "C3", "string": 5, "fret": 3 },
+        { "pitch": "E3", "string": 4, "fret": 2 },
+        { "pitch": "G3", "string": 3, "fret": 0 },
+        { "pitch": "B3", "string": 2, "fret": 0 }
+      ], "duration": 16 }] }
+    ] },
+    { "id": "bass", "instrument": "bassGuitar", "measures": [
+      { "events": [{ "type": "chord", "notes": [{ "pitch": "C2", "string": 3, "fret": 3 }], "duration": 16 }] }
+    ] }
+  ]
+}

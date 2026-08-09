@@ -5,6 +5,7 @@ import sharp from "sharp";
 import createVerovioModule from "verovio/wasm";
 import { VerovioToolkit } from "verovio/esm";
 import { toMusicXml } from "./musicxml.mjs";
+import { ensembleToMusicXml } from "./ensemble-musicxml.mjs";
 import { readAndValidateScore } from "./validate.mjs";
 
 export async function renderScore(source) {
@@ -12,7 +13,7 @@ export async function renderScore(source) {
   const outputDir = path.join("generated", score.id);
   await mkdir(outputDir, { recursive: true });
 
-  const musicXml = toMusicXml(score);
+  const musicXml = score.formatVersion === 2 ? ensembleToMusicXml(score) : toMusicXml(score);
   await writeFile(path.join(outputDir, "score.musicxml"), musicXml);
 
   const module = await createVerovioModule();
