@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -26,6 +26,22 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm build
+      - name: Publish rendered scores into repository
+        if: github.event_name != 'pull_request'
+        run: |
+          rm -rf renders
+          mkdir -p renders
+          cp -R dist/scores/. renders/
+          cp dist/manifest.json renders/manifest.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f renders
+          if git diff --cached --quiet; then
+            echo "No render changes to commit"
+          else
+            git commit -m "Publish rendered notation"
+            git push
+          fi
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
