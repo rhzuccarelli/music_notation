@@ -1,0 +1,37 @@
+{
+  "id": "sabah-mobile-test-001",
+  "title": "Sabah mobile rendering test",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "measures": [
+    {
+      "chord": "Cmaj7",
+      "events": [
+        { "type": "rest", "duration": 6 },
+        { "type": "chord", "notes": ["E4", "G4", "B4"], "duration": 2 },
+        { "type": "rest", "duration": 8 }
+      ]
+    },
+    {
+      "chord": "B",
+      "events": [
+        { "type": "rest", "duration": 14 },
+        { "type": "chord", "notes": ["D#4", "F#4", "B4"], "duration": 2 }
+      ]
+    },
+    {
+      "chord": "Em7",
+      "events": [
+        { "type": "rest", "duration": 16 }
+      ]
+    },
+    {
+      "chord": "Bm7",
+      "events": [
+        { "type": "rest", "duration": 4 },
+        { "type": "chord", "notes": ["D4", "F#4", "A4"], "duration": 2 },
+        { "type": "rest", "duration": 10 }
+      ]
+    }
+  ]
+}
