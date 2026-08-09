@@ -33,6 +33,7 @@ jobs:
           mkdir -p renders
           cp -R dist/scores/. renders/
           cp dist/manifest.json renders/manifest.json
+          cp dist/chat-manifest.json renders/chat-manifest.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f renders
