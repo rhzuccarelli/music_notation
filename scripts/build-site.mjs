@@ -21,6 +21,9 @@ await cp("schema", "dist/schema", { recursive: true });
 await cp("site/rhythm-capture.js", "dist/rhythm-capture.js");
 await cp("site/rhythm-model.mjs", "dist/rhythm-model.mjs");
 await cp("site/style.css", "dist/style.css");
+await cp("site/quiz.js", "dist/quiz.js");
+await cp("site/quiz-model.mjs", "dist/quiz-model.mjs");
+await cp("site/quiz.css", "dist/quiz.css");
 await cp("node_modules/verovio/dist/verovio.mjs", "dist/vendor/verovio.mjs");
 await cp("node_modules/verovio/dist/verovio-module.mjs", "dist/vendor/verovio-module.mjs");
 
@@ -94,11 +97,12 @@ const html = `<!doctype html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="#top" aria-label="Music Notation Sketchbook home"><span class="logo-square"></span><span class="brand-name">Music Notation</span><span class="logo-tag">Sketchbook</span></a>
-    <nav class="header-actions" aria-label="Primary navigation"><a href="#rhythm-capture">Rhythm capture</a><a href="#scores">Scores</a></nav>
+    <nav class="header-actions" aria-label="Primary navigation"><a href="#rhythm-capture">Capture</a><a href="#ear-training">Quizzes</a><a href="#scores">Scores</a></nav>
   </header>
   <main id="top">
     <section class="hero">
@@ -143,6 +147,51 @@ const html = `<!doctype html>
       </div>
     </section>
 
+    <section class="quiz-section" id="ear-training" aria-labelledby="quiz-title">
+      <div class="section-heading"><span id="quiz-title"><i></i>Ear & rhythm training</span><small>Prototype / 03 modes</small></div>
+      <div class="quiz-tabs" role="tablist" aria-label="Training modes">
+        <button class="quiz-tab active" data-quiz-tab="intervals" role="tab" aria-selected="true">01 / Intervals</button>
+        <button class="quiz-tab" data-quiz-tab="hear-rhythm" role="tab" aria-selected="false">02 / Hear rhythm</button>
+        <button class="quiz-tab" data-quiz-tab="tap-rhythm" role="tab" aria-selected="false">03 / Tap rhythm</button>
+      </div>
+
+      <div class="quiz-panel active" data-quiz-panel="intervals">
+        <div class="quiz-intro"><p class="eyebrow">Interval recognition</p><h2>Hear the distance.</h2><p>Listen to two notes, then identify the interval between them.</p></div>
+        <div class="quiz-workspace">
+          <div class="quiz-controls">
+            <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
+            <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="expanded">Expanded</option></select></label>
+          </div>
+          <div class="quiz-stage">
+            <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>
+            <button class="listen-button" id="play-interval" aria-label="Play interval"><span>▶</span><small>Play interval</small></button>
+            <div class="answer-grid" id="interval-answers"></div>
+            <p class="quiz-feedback" id="interval-feedback" aria-live="polite">Score 0 / 0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-panel" data-quiz-panel="hear-rhythm" hidden>
+        <div class="quiz-intro"><p class="eyebrow">Rhythm dictation</p><h2>Hear it. Find it.</h2><p>Listen to one bar, then choose the notation that matches.</p></div>
+        <div class="quiz-stage rhythm-quiz-stage">
+          <button class="btn btn-primary quiz-main-action" id="play-rhythm-question">Play rhythm</button>
+          <div class="notation-options" id="rhythm-options"></div>
+          <p class="quiz-feedback" id="rhythm-feedback" aria-live="polite">Score 0 / 0</p>
+        </div>
+      </div>
+
+      <div class="quiz-panel" data-quiz-panel="tap-rhythm" hidden>
+        <div class="quiz-intro"><p class="eyebrow">Rhythm reading</p><h2>Read it. Tap it.</h2><p>Study the notation, take a four-beat count-in, then tap the rhythm back.</p></div>
+        <div class="quiz-stage rhythm-quiz-stage">
+          <div class="quiz-notation" id="tap-question-notation"><p>LOADING RHYTHM</p></div>
+          <div class="tap-quiz-status"><span id="tap-quiz-phase">Ready</span><strong id="tap-quiz-position">—</strong></div>
+          <button class="quiz-tap-pad" id="quiz-tap-pad" disabled><span>Tap</span><small>Answer pad</small></button>
+          <button class="btn btn-primary quiz-main-action" id="start-tap-quiz">Start answer</button>
+          <p class="quiz-feedback" id="tap-feedback" aria-live="polite">Your score will appear here</p>
+        </div>
+      </div>
+    </section>
+
     <section class="scores" id="scores">
       <div class="section-heading"><span><i></i>Score library</span><small>${entries.length} sketches</small></div>
       <div class="score-list">${cards}</div>
@@ -150,6 +199,7 @@ const html = `<!doctype html>
     </section>
   </main>
   <script type="module" src="rhythm-capture.js"></script>
+  <script type="module" src="quiz.js"></script>
 </body>
 </html>`;
 await writeFile("dist/index.html", html);
