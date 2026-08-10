@@ -18,11 +18,11 @@ export const INTERVAL_LEVELS = {
 
 export const RHYTHM_PATTERNS = [
   [0, 4, 8, 12],
-  [0, 3, 4, 8, 11, 12],
-  [0, 2, 6, 8, 10, 14],
+  [0, 2, 4, 6, 8, 10, 12, 14],
+  [0, 2, 4, 8, 10, 12],
   [0, 4, 6, 8, 12, 14],
-  [0, 2, 4, 7, 10, 12],
-  [0, 3, 6, 8, 11, 14]
+  [0, 3, 4, 8, 11, 12],
+  [0, 1, 2, 4, 8, 9, 10, 12]
 ];
 
 export function chooseDifferentIndex(length, previous = -1, random = Math.random) {
