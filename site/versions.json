@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.0",
+    "date": "2026-08-10",
+    "title": "Printable A5 songbooks",
+    "summary": "Groups every stored musical idea by song and generates one print-ready, multi-page A5 document per song."
+  },
+  {
     "version": "0.5.0",
     "date": "2026-08-10",
     "title": "Tool launcher and complete intervals",

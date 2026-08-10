@@ -14,6 +14,7 @@ scores.sort((a, b) => a.title.localeCompare(b.title));
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist/scores", { recursive: true });
 await mkdir("dist/vendor", { recursive: true });
+await mkdir("dist/songbooks", { recursive: true });
 for (const score of scores) {
   await cp(`generated/${score.id}`, `dist/scores/${score.id}`, { recursive: true });
 }
@@ -26,6 +27,7 @@ await cp("site/quiz-model.mjs", "dist/quiz-model.mjs");
 await cp("site/quiz.css", "dist/quiz.css");
 await cp("site/landing.css", "dist/landing.css");
 await cp("site/versions.json", "dist/versions.json");
+await cp("site/songbook.css", "dist/songbook.css");
 await cp("node_modules/verovio/dist/verovio.mjs", "dist/vendor/verovio.mjs");
 await cp("node_modules/verovio/dist/verovio-module.mjs", "dist/vendor/verovio-module.mjs");
 
@@ -91,12 +93,40 @@ const cards = entries.map((score) => `
 
 const versions = JSON.parse(await readFile("site/versions.json", "utf8"));
 const currentVersion = versions[0];
+const songbookConfig = JSON.parse(await readFile("site/songbooks.json", "utf8"));
+const songbooks = songbookConfig.songs.map((song) => ({
+  ...song,
+  scores: entries.filter((score) => score.id.startsWith(song.idPrefix))
+})).filter((song) => song.scores.length);
 const versionCards = versions.map((version) => `
   <article class="version-entry">
     <div><strong>v${version.version}</strong><time datetime="${version.date}">${version.date}</time></div>
     <h3>${version.title}</h3>
     <p>${version.summary}</p>
   </article>`).join("");
+
+const songbookCards = songbooks.map((song) => `
+  <article class="songbook-card">
+    <span>${String(song.scores.length).padStart(2, "0")} ideas</span>
+    <h3>${song.title}</h3>
+    <p>${song.description}</p>
+    <a class="btn" href="songbooks/${song.id}.html">Open A5 songbook</a>
+  </article>`).join("");
+
+function songbookHtml(song) {
+  const ideas = song.scores.map((score, index) => `
+    <section class="idea-page">
+      <header><span>${song.title} / Idea ${String(index + 1).padStart(2, "0")}</span><span>${score.tempo} BPM · ${score.timeSignature}</span></header>
+      <h2>${score.title}</h2>
+      <figure><img src="../${score.relative.svg}" alt="Notation for ${score.title}"></figure>
+      <footer><span>Music Notation Sketchbook</span><span>${index + 1} / ${song.scores.length}</span></footer>
+    </section>`).join("");
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${song.title} — A5 Songbook</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../songbook.css"></head><body><nav class="print-controls"><a href="../#songbooks">← Back to songbooks</a><button onclick="window.print()">Print / Save PDF</button></nav><main><section class="cover"><p>Music Notation Sketchbook</p><h1>${song.title}</h1><div><span>A5 songbook</span><span>${song.scores.length} musical ideas</span><span>v${currentVersion.version}</span></div></section>${ideas}</main></body></html>`;
+}
+
+for (const song of songbooks) {
+  await writeFile(`dist/songbooks/${song.id}.html`, songbookHtml(song));
+}
 
 const html = `<!doctype html>
 <html lang="en">
@@ -124,14 +154,20 @@ const html = `<!doctype html>
     </section>
 
     <section class="tool-launcher" id="tools" aria-labelledby="tools-title">
-      <div class="section-heading"><span id="tools-title"><i></i>Choose a tool</span><small>05 functions</small></div>
+      <div class="section-heading"><span id="tools-title"><i></i>Choose a tool</span><small>06 functions</small></div>
       <nav class="launcher-grid" aria-label="Music tools">
         <a class="launcher-card" href="#rhythm-capture"><span class="launcher-number">01</span><span class="tool-icon icon-capture" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Rhythm capture</strong><small>Tap an idea and engrave it</small></a>
         <a class="launcher-card" href="#ear-training" data-open-quiz="intervals"><span class="launcher-number">02</span><span class="tool-icon icon-interval" aria-hidden="true"><i></i><i></i></span><strong>Intervals</strong><small>Train melodic and harmonic distance</small></a>
         <a class="launcher-card" href="#ear-training" data-open-quiz="hear-rhythm"><span class="launcher-number">03</span><span class="tool-icon icon-hear" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Hear rhythm</strong><small>Match sound to notation</small></a>
         <a class="launcher-card" href="#ear-training" data-open-quiz="tap-rhythm"><span class="launcher-number">04</span><span class="tool-icon icon-tap" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Tap rhythm</strong><small>Read notation and play it back</small></a>
         <a class="launcher-card" href="#scores"><span class="launcher-number">05</span><span class="tool-icon icon-library" aria-hidden="true"><i></i><i></i><i></i></span><strong>Score library</strong><small>Browse every musical sketch</small></a>
+        <a class="launcher-card" href="#songbooks"><span class="launcher-number">06</span><span class="tool-icon icon-songbook" aria-hidden="true"><i></i><i></i></span><strong>Songbooks</strong><small>Print every idea by song in A5</small></a>
       </nav>
+    </section>
+
+    <section class="songbooks" id="songbooks">
+      <div class="section-heading"><span><i></i>A5 songbooks</span><small>${songbooks.length} songs</small></div>
+      <div class="songbook-grid">${songbookCards}</div>
     </section>
 
     <section class="tool" id="rhythm-capture" aria-labelledby="rhythm-title">

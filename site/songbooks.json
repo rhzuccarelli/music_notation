@@ -1,0 +1,19 @@
+{
+  "songs": [
+    {
+      "id": "cage",
+      "idPrefix": "cage-",
+      "title": "Cage",
+      "description": "Chorus ideas for Rhodes, piano and disco guitar."
+    },
+    {
+      "id": "sabah",
+      "idPrefix": "sabah-",
+      "title": "Sabah",
+      "description": "Piano, middle-eight and wind arrangement sketches."
+    }
+  ],
+  "excludedScoreIds": [
+    "instrument-layouts-demo"
+  ]
+}
