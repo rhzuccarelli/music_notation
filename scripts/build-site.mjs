@@ -217,9 +217,10 @@ const html = `<!doctype html>
       <div class="quiz-panel active" data-quiz-panel="intervals">
         <div class="quiz-intro"><p class="eyebrow">Interval recognition</p><h2>Hear the distance.</h2><p>Listen to two notes, then identify the interval between them.</p></div>
         <div class="quiz-workspace">
-          <div class="quiz-controls">
+          <div class="quiz-controls interval-controls">
             <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
             <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="intermediate">Intermediate</option><option value="all">All intervals</option></select></label>
+            <div class="interval-sound-control"><span class="rhythm-wave-symbol" id="interval-wave-symbol" aria-hidden="true">∿</span><label>Sound<select id="interval-sound" aria-label="Interval sound"></select></label></div>
           </div>
           <div class="quiz-stage">
             <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>
