@@ -22,6 +22,13 @@ Every JSON file in `examples/` is validated against
 `schema/musical-sketch.schema.json` before rendering. A push to `main` tests,
 renders, and deploys the viewer to GitHub Pages.
 
+## Website versions
+
+Every user-facing release is recorded in `site/versions.json` and displayed in
+the Version History section of the website. Entries use semantic versioning and
+are stored newest first. The latest entry must match the version in
+`package.json`; the automated tests enforce this convention.
+
 ## Instrument layouts (format version 2)
 
 Multi-instrument sketches use `"formatVersion": 2`, a shared `harmony` array,
