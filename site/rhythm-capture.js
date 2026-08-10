@@ -35,6 +35,8 @@ let clickIndex = 0;
 
 createVerovioModule().then((module) => {
   toolkit = new VerovioToolkit(module);
+  window.notationToolkit = toolkit;
+  window.dispatchEvent(new Event("notation-ready"));
   $("#engine-status").textContent = "Verovio ready";
 }).catch(() => {
   $("#engine-status").textContent = "Notation engine unavailable";
