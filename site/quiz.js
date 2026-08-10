@@ -1,5 +1,5 @@
 import { buildRhythmMusicXml } from "./rhythm-model.mjs";
-import { INTERVAL_LEVELS, INTERVAL_SOUNDS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, chooseDifferentIndex, scoreTappedRhythm } from "./quiz-model.mjs";
+import { INTERVAL_LEVELS, INTERVAL_SOUNDS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, VOLUME_LEVELS, chooseDifferentIndex, scoreTappedRhythm } from "./quiz-model.mjs";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -12,8 +12,6 @@ let tapQuestion = 0;
 let tapState = "idle";
 let tapStart = 0;
 let tapTimes = [];
-let intervalSoundId = "pure";
-let rhythmSoundId = "click";
 
 function setFeedback(target, text, state = "neutral") {
   target.textContent = text;
@@ -28,30 +26,39 @@ async function ensureAudio() {
   if (audioContext.state !== "running") await audioContext.resume();
 }
 
-function buildSoundPicker(target, sounds, selectedId, onSelect) {
-  target.innerHTML = sounds.map((sound) => `<button type="button" data-sound="${sound.id}" aria-pressed="${sound.id === selectedId}"><strong>${sound.symbol}</strong><span>${sound.label}</span></button>`).join("");
-  target.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
-    target.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-    onSelect(button.dataset.sound);
-  }));
+function buildSegmentPicker(target, items, name, selectedId) {
+  target.innerHTML = items.map((item) => `<label><input type="radio" name="${name}" value="${item.id}" ${item.id === selectedId ? "checked" : ""}><span class="segment-face"><strong>${item.symbol}</strong><span>${item.label}</span></span></label>`).join("");
 }
 
-function tone(midi, at, soundId = "pure") {
+function selectedValue(name, fallback) {
+  return $(`input[name="${name}"]:checked`)?.value ?? fallback;
+}
+
+function selectedVolume(name) {
+  const id = selectedValue(name, "medium");
+  return VOLUME_LEVELS.find((level) => level.id === id)?.multiplier ?? 1;
+}
+
+function tone(midi, at, soundId = "pure", volumeMultiplier = 1) {
   const sound = INTERVAL_SOUNDS.find((candidate) => candidate.id === soundId) ?? INTERVAL_SOUNDS[0];
   const frequency = 440 * 2 ** ((midi - 69) / 12);
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
+  const filter = audioContext.createBiquadFilter();
   osc.type = sound.oscillator;
   osc.frequency.value = frequency;
+  filter.type = "lowpass";
+  filter.frequency.value = sound.filterFrequency;
+  filter.Q.value = 0.7;
   gain.gain.setValueAtTime(0.0001, at);
-  gain.gain.exponentialRampToValueAtTime(sound.volume, at + sound.attack);
+  gain.gain.exponentialRampToValueAtTime(sound.volume * volumeMultiplier, at + sound.attack);
   gain.gain.exponentialRampToValueAtTime(0.0001, at + sound.duration);
-  osc.connect(gain).connect(audioContext.destination);
+  osc.connect(filter).connect(gain).connect(audioContext.destination);
   osc.start(at);
   osc.stop(at + sound.duration + 0.02);
 }
 
-function percussion(at, soundId = "click") {
+function percussion(at, soundId = "click", volumeMultiplier = 1) {
   const sound = RHYTHM_SOUNDS.find((candidate) => candidate.id === soundId) ?? RHYTHM_SOUNDS[0];
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
@@ -59,7 +66,7 @@ function percussion(at, soundId = "click") {
   osc.frequency.setValueAtTime(sound.startFrequency, at);
   osc.frequency.exponentialRampToValueAtTime(sound.endFrequency, at + sound.duration);
   gain.gain.setValueAtTime(0.0001, at);
-  gain.gain.exponentialRampToValueAtTime(sound.volume, at + sound.attack);
+  gain.gain.exponentialRampToValueAtTime(sound.volume * volumeMultiplier, at + sound.attack);
   gain.gain.exponentialRampToValueAtTime(0.0001, at + sound.duration);
   osc.connect(gain).connect(audioContext.destination);
   osc.start(at);
@@ -95,8 +102,10 @@ async function playInterval() {
   await ensureAudio();
   if (!intervalQuestion) newIntervalQuestion();
   const start = audioContext.currentTime + 0.06;
-  tone(intervalQuestion.root, start, intervalSoundId);
-  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.7 : start, intervalSoundId);
+  const soundId = selectedValue("interval-sound", "pure");
+  const volume = selectedVolume("interval-volume");
+  tone(intervalQuestion.root, start, soundId, volume);
+  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.82 : start, soundId, volume);
 }
 
 function answerInterval(event) {
@@ -149,7 +158,9 @@ async function playRhythm(pattern = RHYTHM_PATTERNS[rhythmQuestion]) {
   const start = audioContext.currentTime + 0.08;
   for (let i = 0; i < 4; i += 1) metronome(start + i * beat, i === 0);
   const rhythmStart = start + 4 * beat;
-  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4, rhythmSoundId));
+  const soundId = selectedValue("rhythm-sound", "click");
+  const volume = selectedVolume("rhythm-volume");
+  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4, soundId, volume));
 }
 
 function answerRhythm(event) {
@@ -235,8 +246,10 @@ document.addEventListener("keydown", (event) => {
   recordQuizTap();
 });
 
-buildSoundPicker($("#interval-sounds"), INTERVAL_SOUNDS, intervalSoundId, (soundId) => { intervalSoundId = soundId; });
+buildSegmentPicker($("#interval-sounds"), INTERVAL_SOUNDS, "interval-sound", "pure");
+buildSegmentPicker($("#interval-volume"), VOLUME_LEVELS, "interval-volume", "medium");
 newIntervalQuestion();
-buildSoundPicker($("#rhythm-sounds"), RHYTHM_SOUNDS, rhythmSoundId, (soundId) => { rhythmSoundId = soundId; });
+buildSegmentPicker($("#rhythm-sounds"), RHYTHM_SOUNDS, "rhythm-sound", "click");
+buildSegmentPicker($("#rhythm-volume"), VOLUME_LEVELS, "rhythm-volume", "medium");
 newRhythmQuestion();
 newTapQuestion();
