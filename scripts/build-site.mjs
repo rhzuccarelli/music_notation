@@ -233,7 +233,11 @@ const html = `<!doctype html>
       <div class="quiz-panel" data-quiz-panel="hear-rhythm" hidden>
         <div class="quiz-intro"><p class="eyebrow">Rhythm dictation</p><h2>Hear it. Find it.</h2><p>Listen to one bar, then choose the notation that matches.</p></div>
         <div class="quiz-stage rhythm-quiz-stage">
-          <button class="btn btn-primary quiz-main-action" id="play-rhythm-question">Play rhythm</button>
+          <div class="rhythm-playback-controls">
+            <span class="rhythm-wave-symbol" id="rhythm-wave-symbol" aria-hidden="true">△</span>
+            <label>Sound<select id="rhythm-sound" aria-label="Rhythm sound"></select></label>
+            <button class="btn btn-primary" id="play-rhythm-question">Play rhythm</button>
+          </div>
           <div class="notation-options" id="rhythm-options"></div>
           <p class="quiz-feedback" id="rhythm-feedback" aria-live="polite">Score 0 / 0</p>
         </div>
