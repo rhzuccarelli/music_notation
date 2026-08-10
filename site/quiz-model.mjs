@@ -42,6 +42,12 @@ export const RHYTHM_PATTERNS = [
   [0, 1, 2, 4, 8, 9, 10, 12]
 ];
 
+export const RHYTHM_SOUNDS = [
+  { id: "click", label: "Dry click", symbol: "△", oscillator: "triangle", startFrequency: 520, endFrequency: 300, duration: 0.085, attack: 0.002, volume: 0.2 },
+  { id: "wood", label: "Warm wood", symbol: "⌁", oscillator: "sine", startFrequency: 390, endFrequency: 240, duration: 0.22, attack: 0.006, volume: 0.24 },
+  { id: "sustain", label: "Soft sustain", symbol: "∿", oscillator: "sine", startFrequency: 330, endFrequency: 255, duration: 0.48, attack: 0.012, volume: 0.2 }
+];
+
 export function chooseDifferentIndex(length, previous = -1, random = Math.random) {
   if (length < 2) return 0;
   let index = Math.floor(random() * length);
