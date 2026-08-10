@@ -1,5 +1,5 @@
 import { buildRhythmMusicXml } from "./rhythm-model.mjs";
-import { INTERVAL_LEVELS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, chooseDifferentIndex, scoreTappedRhythm } from "./quiz-model.mjs";
+import { INTERVAL_LEVELS, INTERVAL_SOUNDS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, chooseDifferentIndex, scoreTappedRhythm } from "./quiz-model.mjs";
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -26,18 +26,19 @@ async function ensureAudio() {
   if (audioContext.state !== "running") await audioContext.resume();
 }
 
-function tone(midi, at, duration = 0.55, volume = 0.2) {
+function tone(midi, at, soundId = "pure") {
+  const sound = INTERVAL_SOUNDS.find((candidate) => candidate.id === soundId) ?? INTERVAL_SOUNDS[0];
   const frequency = 440 * 2 ** ((midi - 69) / 12);
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
-  osc.type = "sine";
+  osc.type = sound.oscillator;
   osc.frequency.value = frequency;
   gain.gain.setValueAtTime(0.0001, at);
-  gain.gain.exponentialRampToValueAtTime(volume, at + 0.018);
-  gain.gain.exponentialRampToValueAtTime(0.0001, at + duration);
+  gain.gain.exponentialRampToValueAtTime(sound.volume, at + sound.attack);
+  gain.gain.exponentialRampToValueAtTime(0.0001, at + sound.duration);
   osc.connect(gain).connect(audioContext.destination);
   osc.start(at);
-  osc.stop(at + duration + 0.02);
+  osc.stop(at + sound.duration + 0.02);
 }
 
 function percussion(at, soundId = "click") {
@@ -84,8 +85,9 @@ async function playInterval() {
   await ensureAudio();
   if (!intervalQuestion) newIntervalQuestion();
   const start = audioContext.currentTime + 0.06;
-  tone(intervalQuestion.root, start);
-  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.7 : start);
+  const soundId = $("#interval-sound").value;
+  tone(intervalQuestion.root, start, soundId);
+  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.7 : start, soundId);
 }
 
 function answerInterval(event) {
@@ -225,6 +227,10 @@ document.addEventListener("keydown", (event) => {
   recordQuizTap();
 });
 
+$("#interval-sound").innerHTML = INTERVAL_SOUNDS.map((sound) => `<option value="${sound.id}">${sound.symbol} ${sound.label}</option>`).join("");
+$("#interval-sound").addEventListener("change", (event) => {
+  $("#interval-wave-symbol").textContent = INTERVAL_SOUNDS.find((sound) => sound.id === event.target.value)?.symbol ?? "∿";
+});
 newIntervalQuestion();
 $("#rhythm-sound").innerHTML = RHYTHM_SOUNDS.map((sound) => `<option value="${sound.id}">${sound.symbol} ${sound.label}</option>`).join("");
 $("#rhythm-sound").addEventListener("change", (event) => {
