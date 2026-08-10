@@ -20,3 +20,16 @@ test("ties an inferred note across a barline", () => {
   assert.match(xml, /<tie type="stop"\/>/);
   assert.equal((xml.match(/<measure number=/g) ?? []).length, 2);
 });
+
+test("splits and ties an off-beat note across the next beat", () => {
+  const xml = buildRhythmMusicXml({ attacks: [7, 10], totalSlots: 16, subdivisions: 4, tempo: 100 });
+  assert.match(xml, /<duration>1<\/duration><tie type="start"\/>/);
+  assert.match(xml, /<duration>2<\/duration><tie type="stop"\/>/);
+});
+
+test("beams short notes together within a beat", () => {
+  const xml = buildRhythmMusicXml({ attacks: [0, 3, 4], totalSlots: 16, subdivisions: 4, tempo: 100 });
+  assert.match(xml, /<beam number="1">begin<\/beam>/);
+  assert.match(xml, /<beam number="1">end<\/beam>/);
+  assert.match(xml, /<beam number="2">backward hook<\/beam>/);
+});

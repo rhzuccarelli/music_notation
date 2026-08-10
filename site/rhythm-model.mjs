@@ -28,11 +28,65 @@ function tieMarkup(hasPrevious, hasNext) {
   return { ties, notations: tied ? `<notations>${tied}</notations>` : "" };
 }
 
-function writeChunk(chunk, rest, hasPrevious, hasNext) {
+function beamMarkup(beams = []) {
+  return beams.map(({ number, value }) => `<beam number="${number}">${value}</beam>`).join("");
+}
+
+function writeChunk({ chunk, rest, hasPrevious, hasNext, beams }) {
   const dots = "<dot/>".repeat(chunk.dots);
   if (rest) return `<note><rest/><duration>${chunk.value}</duration><voice>1</voice><type>${chunk.type}</type>${dots}</note>`;
   const { ties, notations } = tieMarkup(hasPrevious, hasNext);
-  return `<note><pitch><step>C</step><octave>5</octave></pitch><duration>${chunk.value}</duration>${ties}<voice>1</voice><type>${chunk.type}</type>${dots}<stem>up</stem><notehead>x</notehead>${notations}</note>`;
+  return `<note><unpitched><display-step>E</display-step><display-octave>4</display-octave></unpitched><duration>${chunk.value}</duration>${ties}<voice>1</voice><type>${chunk.type}</type>${dots}<stem>up</stem><notehead>x</notehead>${beamMarkup(beams)}${notations}</note>`;
+}
+
+function splitAtBeatBoundaries(start, end) {
+  const chunks = [];
+  let cursor = start;
+  while (cursor < end) {
+    const positionInBeat = cursor % DIVISIONS;
+    const nextBeat = cursor + (DIVISIONS - positionInBeat);
+    const sectionEnd = positionInBeat && end > nextBeat ? nextBeat : end;
+    for (const chunk of splitDuration(sectionEnd - cursor)) {
+      chunks.push({ chunk, start: cursor });
+      cursor += chunk.value;
+    }
+  }
+  return chunks;
+}
+
+function applyBeams(events) {
+  for (let beat = 0; beat < 4; beat += 1) {
+    const beatStart = beat * DIVISIONS;
+    const beatEnd = beatStart + DIVISIONS;
+    const candidates = events.filter((event) => !event.rest && event.offset >= beatStart && event.offset < beatEnd && ["eighth", "16th"].includes(event.chunk.type));
+    const groups = [];
+    let group = [];
+    for (const event of candidates) {
+      const previous = group.at(-1);
+      if (previous && previous.offset + previous.chunk.value !== event.offset) {
+        if (group.length > 1) groups.push(group);
+        group = [];
+      }
+      group.push(event);
+    }
+    if (group.length > 1) groups.push(group);
+
+    for (const primary of groups) {
+      primary.forEach((event, index) => event.beams.push({ number: 1, value: index === 0 ? "begin" : index === primary.length - 1 ? "end" : "continue" }));
+      const sixteenths = primary.filter((event) => event.chunk.type === "16th");
+      for (const event of sixteenths) {
+        const index = primary.indexOf(event);
+        const previousIsSixteenth = primary[index - 1]?.chunk.type === "16th";
+        const nextIsSixteenth = primary[index + 1]?.chunk.type === "16th";
+        let value;
+        if (!previousIsSixteenth && !nextIsSixteenth) value = index === 0 ? "forward hook" : "backward hook";
+        else if (!previousIsSixteenth) value = "begin";
+        else if (!nextIsSixteenth) value = "end";
+        else value = "continue";
+        event.beams.push({ number: 2, value });
+      }
+    }
+  }
 }
 
 function makeSegments(attacks, totalSlots, unitDuration) {
@@ -46,7 +100,7 @@ function makeSegments(attacks, totalSlots, unitDuration) {
   return segments;
 }
 
-export function buildRhythmMusicXml({ attacks, totalSlots, subdivisions, tempo }) {
+export function buildRhythmMusicXml({ attacks, totalSlots, subdivisions, tempo, showTempo = true, partName = "Rhythm" }) {
   const unitDuration = DIVISIONS / subdivisions;
   const measureDuration = DIVISIONS * 4;
   const totalDuration = totalSlots * unitDuration;
@@ -60,18 +114,17 @@ export function buildRhythmMusicXml({ attacks, totalSlots, subdivisions, tempo }
       const overlapStart = Math.max(segment.start, measureStart);
       const overlapEnd = Math.min(segment.end, measureEnd);
       if (overlapStart >= overlapEnd) continue;
-      let cursor = overlapStart;
-      for (const chunk of splitDuration(overlapEnd - overlapStart)) {
-        const chunkEnd = cursor + chunk.value;
-        notes.push(writeChunk(chunk, segment.rest, cursor > segment.start, chunkEnd < segment.end));
-        cursor = chunkEnd;
+      for (const { chunk, start } of splitAtBeatBoundaries(overlapStart, overlapEnd)) {
+        const chunkEnd = start + chunk.value;
+        notes.push({ chunk, rest: segment.rest, hasPrevious: start > segment.start, hasNext: chunkEnd < segment.end, offset: start - measureStart, beams: [] });
       }
     }
+    applyBeams(notes);
     const attributes = measures.length === 0
-      ? `<attributes><divisions>${DIVISIONS}</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>percussion</sign><line>2</line></clef></attributes><direction placement="above"><direction-type><metronome><beat-unit>quarter</beat-unit><per-minute>${tempo}</per-minute></metronome></direction-type><sound tempo="${tempo}"/></direction>`
+      ? `<attributes><divisions>${DIVISIONS}</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>percussion</sign><line>2</line></clef><staff-details><staff-lines>1</staff-lines></staff-details></attributes>${showTempo ? `<direction placement="above"><direction-type><metronome><beat-unit>quarter</beat-unit><per-minute>${tempo}</per-minute></metronome></direction-type><sound tempo="${tempo}"/></direction>` : ""}`
       : "";
-    measures.push(`<measure number="${measures.length + 1}">${attributes}${notes.join("")}</measure>`);
+    measures.push(`<measure number="${measures.length + 1}">${attributes}${notes.map(writeChunk).join("")}</measure>`);
   }
 
-  return `<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd"><score-partwise version="4.0"><work><work-title>Captured rhythm</work-title></work><part-list><score-part id="P1"><part-name>Rhythm</part-name></score-part></part-list><part id="P1">${measures.join("")}</part></score-partwise>`;
+  return `<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd"><score-partwise version="4.0"><work><work-title>Captured rhythm</work-title></work><part-list><score-part id="P1"><part-name>${partName}</part-name></score-part></part-list><part id="P1">${measures.join("")}</part></score-partwise>`;
 }
