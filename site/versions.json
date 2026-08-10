@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.1",
+    "date": "2026-08-10",
+    "title": "Rhythm sound palette",
+    "summary": "Adds three selectable rhythm-recognition sounds: a dry click, warm wood tone and softer sustained tone."
+  },
+  {
     "version": "0.6.0",
     "date": "2026-08-10",
     "title": "Printable A5 songbooks",
