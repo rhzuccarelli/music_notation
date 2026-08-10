@@ -19,7 +19,7 @@ async function ensureAudio() {
   if (audioContext.state !== "running") await audioContext.resume();
 }
 
-function tone(midi, at, duration = 0.55, volume = 0.12) {
+function tone(midi, at, duration = 0.55, volume = 0.2) {
   const frequency = 440 * 2 ** ((midi - 69) / 12);
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
@@ -33,28 +33,29 @@ function tone(midi, at, duration = 0.55, volume = 0.12) {
   osc.stop(at + duration + 0.02);
 }
 
-function percussion(at, accent = false) {
+function percussion(at) {
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
-  osc.type = "square";
-  osc.frequency.value = accent ? 1480 : 760;
-  gain.gain.setValueAtTime(accent ? 0.18 : 0.13, at);
-  gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.055);
+  osc.type = "triangle";
+  osc.frequency.setValueAtTime(520, at);
+  osc.frequency.exponentialRampToValueAtTime(300, at + 0.07);
+  gain.gain.setValueAtTime(0.2, at);
+  gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.085);
   osc.connect(gain).connect(audioContext.destination);
   osc.start(at);
-  osc.stop(at + 0.065);
+  osc.stop(at + 0.095);
 }
 
 function metronome(at, accent = false) {
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
-  osc.type = "square";
-  osc.frequency.value = accent ? 1560 : 1120;
-  gain.gain.setValueAtTime(accent ? 0.2 : 0.14, at);
-  gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.04);
+  osc.type = "sine";
+  osc.frequency.value = accent ? 2400 : 1900;
+  gain.gain.setValueAtTime(accent ? 0.18 : 0.12, at);
+  gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.025);
   osc.connect(gain).connect(audioContext.destination);
   osc.start(at);
-  osc.stop(at + 0.05);
+  osc.stop(at + 0.035);
 }
 
 function newIntervalQuestion() {
@@ -98,7 +99,7 @@ function waitForToolkit() {
 
 async function renderRhythm(target, pattern, compact = false) {
   const toolkit = await waitForToolkit();
-  const xml = buildRhythmMusicXml({ attacks: pattern, totalSlots: 16, subdivisions: 4, tempo: 100 });
+  const xml = buildRhythmMusicXml({ attacks: pattern, totalSlots: 16, subdivisions: 4, tempo: 100, showTempo: false, partName: "" });
   toolkit.setOptions({ pageWidth: compact ? 1050 : 1500, pageHeight: 650, scale: compact ? 34 : 40, adjustPageHeight: true, breaks: "none", footer: "none", header: "none", spacingStaff: 3 });
   toolkit.loadData(xml);
   target.innerHTML = toolkit.renderToSVG(1);
@@ -126,7 +127,7 @@ async function playRhythm(pattern = RHYTHM_PATTERNS[rhythmQuestion]) {
   const start = audioContext.currentTime + 0.08;
   for (let i = 0; i < 4; i += 1) metronome(start + i * beat, i === 0);
   const rhythmStart = start + 4 * beat;
-  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4, slot === 0));
+  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4));
 }
 
 function answerRhythm(event) {
