@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { RHYTHM_PATTERNS, chooseDifferentIndex, scoreTappedRhythm } from "../site/quiz-model.mjs";
+import { INTERVAL_LEVELS, RHYTHM_PATTERNS, chooseDifferentIndex, scoreTappedRhythm } from "../site/quiz-model.mjs";
 
 test("chooses a different quiz item when random repeats the previous one", () => {
   assert.equal(chooseDifferentIndex(4, 0, () => 0), 1);
@@ -19,4 +19,8 @@ test("keeps beginner quiz rhythms ordered and inside one bar", () => {
     assert.deepEqual(pattern, [...pattern].sort((a, b) => a - b));
     assert.ok(pattern.every((slot) => slot >= 0 && slot < 16));
   }
+});
+
+test("includes every chromatic interval from unison through octave", () => {
+  assert.deepEqual(INTERVAL_LEVELS.all.map((interval) => interval.semitones), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 });
