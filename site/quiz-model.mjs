@@ -33,6 +33,12 @@ export const INTERVAL_LEVELS = {
   ]
 };
 
+export const INTERVAL_SOUNDS = [
+  { id: "pure", label: "Pure sine", symbol: "∿", oscillator: "sine", duration: 0.62, attack: 0.018, volume: 0.22 },
+  { id: "warm", label: "Warm triangle", symbol: "△", oscillator: "triangle", duration: 0.68, attack: 0.024, volume: 0.16 },
+  { id: "bright", label: "Bright square", symbol: "⊓", oscillator: "square", duration: 0.5, attack: 0.012, volume: 0.075 }
+];
+
 export const RHYTHM_PATTERNS = [
   [0, 4, 8, 12],
   [0, 2, 4, 6, 8, 10, 12, 14],

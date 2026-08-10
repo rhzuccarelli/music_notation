@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.2",
+    "date": "2026-08-10",
+    "title": "Selectable interval timbres",
+    "summary": "Adds pure sine, warm triangle and bright square sound choices—with waveform symbols—to the interval trainer."
+  },
+  {
     "version": "0.6.1",
     "date": "2026-08-10",
     "title": "Rhythm sound palette",
