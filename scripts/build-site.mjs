@@ -19,6 +19,7 @@ for (const score of scores) {
 }
 await cp("schema", "dist/schema", { recursive: true });
 await cp("site/rhythm-capture.js", "dist/rhythm-capture.js");
+await cp("site/rhythm-model.mjs", "dist/rhythm-model.mjs");
 await cp("site/style.css", "dist/style.css");
 await cp("node_modules/verovio/dist/verovio.mjs", "dist/vendor/verovio.mjs");
 await cp("node_modules/verovio/dist/verovio-module.mjs", "dist/vendor/verovio-module.mjs");
