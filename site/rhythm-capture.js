@@ -6,6 +6,7 @@ const tempo = $("#tempo");
 const bars = $("#bars");
 const grid = $("#grid");
 const countIn = $("#count-in");
+const metronomeSound = $("#metronome-sound");
 const startButton = $("#start");
 const tapPad = $("#tap-pad");
 const captureStatus = $("#capture-status");
@@ -41,7 +42,7 @@ createVerovioModule().then((module) => {
 tempo.addEventListener("input", () => $("#tempo-output").textContent = `${tempo.value} BPM`);
 bars.addEventListener("change", () => taps.length && finishPattern());
 grid.addEventListener("change", () => finishPattern());
-startButton.addEventListener("click", () => state === "idle" ? beginCapture() : stopCapture());
+startButton.addEventListener("click", async () => state === "idle" ? await beginCapture() : stopCapture());
 tapPad.addEventListener("pointerdown", captureTap);
 undoButton.addEventListener("click", () => { taps.pop(); finishPattern(); });
 clearButton.addEventListener("click", clearPattern);
@@ -53,24 +54,34 @@ document.addEventListener("keydown", (event) => {
   captureTap();
 });
 
-function ensureAudio() {
-  audioContext ??= new AudioContext();
-  if (audioContext.state === "suspended") audioContext.resume();
+async function ensureAudio() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  audioContext ??= new AudioContextClass();
+  if (audioContext.state !== "running") await audioContext.resume();
 }
 
 function click(at, accent = false, note = false) {
   const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
-  osc.frequency.value = note ? 820 : accent ? 1320 : 980;
-  gain.gain.setValueAtTime(note ? 0.12 : 0.18, at);
-  gain.gain.exponentialRampToValueAtTime(0.0001, at + (note ? 0.06 : 0.035));
+  osc.type = "square";
+  osc.frequency.value = note ? 780 : accent ? 1560 : 1120;
+  gain.gain.setValueAtTime(note ? 0.12 : accent ? 0.24 : 0.18, at);
+  gain.gain.exponentialRampToValueAtTime(0.0001, at + (note ? 0.06 : 0.045));
   osc.connect(gain).connect(audioContext.destination);
   osc.start(at);
   osc.stop(at + 0.07);
 }
 
-function beginCapture() {
-  ensureAudio();
+async function beginCapture() {
+  startButton.disabled = true;
+  captureStatus.textContent = "Starting audio";
+  try {
+    await ensureAudio();
+  } catch {
+    captureStatus.textContent = "Audio blocked";
+    startButton.disabled = false;
+    return;
+  }
   clearPattern();
   state = countIn.checked ? "count-in" : "recording";
   const beat = 60 / Number(tempo.value);
@@ -81,6 +92,7 @@ function beginCapture() {
   nextClick = audioContext.currentTime + lead;
   clickIndex = -countBeats;
   startButton.textContent = "Stop capture";
+  startButton.disabled = false;
   tapPad.disabled = true;
   captureStatus.textContent = countIn.checked ? "Count in" : "Recording";
   timer = setInterval(schedule, 20);
@@ -91,7 +103,7 @@ function schedule() {
   const beat = 60 / Number(tempo.value);
   while (nextClick < audioContext.currentTime + 0.12 && nextClick < captureEnd) {
     const beatInBar = ((clickIndex % 4) + 4) % 4;
-    click(nextClick, beatInBar === 0);
+    if (metronomeSound.checked) click(nextClick, beatInBar === 0);
     const visualDelay = Math.max(0, (nextClick - audioContext.currentTime) * 1000);
     const visualIndex = clickIndex;
     setTimeout(() => showBeat(visualIndex), visualDelay);
@@ -183,8 +195,8 @@ function renderNotation() {
   notation.innerHTML = toolkit.renderToSVG(1);
 }
 
-function playPattern() {
-  ensureAudio();
+async function playPattern() {
+  await ensureAudio();
   const subdivisions = Number(grid.value) / 4;
   const slotSeconds = 60 / Number(tempo.value) / subdivisions;
   const start = audioContext.currentTime + 0.08;

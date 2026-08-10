@@ -119,6 +119,7 @@ const html = `<!doctype html>
             <label>Grid<select id="grid"><option value="8">Eighth notes</option><option value="16" selected>Sixteenth notes</option></select></label>
           </div>
           <label class="check"><input id="count-in" type="checkbox" checked><span>One-bar count-in</span></label>
+          <label class="check" style="margin-top:12px"><input id="metronome-sound" type="checkbox" checked><span>Metronome sound</span></label>
           <div class="mini-actions"><button class="btn" id="undo" disabled>Undo tap</button><button class="btn" id="clear" disabled>Clear</button></div>
           <p class="instructions">Press start, then tap the large pad—or the spacebar—in time. Recording stops after the selected number of bars.</p>
         </aside>
