@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { INTERVAL_LEVELS, INTERVAL_SOUNDS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, chooseDifferentIndex, scoreTappedRhythm } from "../site/quiz-model.mjs";
+import { INTERVAL_LEVELS, INTERVAL_SOUNDS, RHYTHM_PATTERNS, RHYTHM_SOUNDS, VOLUME_LEVELS, chooseDifferentIndex, scoreTappedRhythm } from "../site/quiz-model.mjs";
 
 test("chooses a different quiz item when random repeats the previous one", () => {
   assert.equal(chooseDifferentIndex(4, 0, () => 0), 1);
@@ -35,4 +35,10 @@ test("offers three distinct rhythm sounds from short to sustained", () => {
 test("offers three distinct pitched interval timbres", () => {
   assert.deepEqual(INTERVAL_SOUNDS.map((sound) => sound.oscillator), ["sine", "triangle", "square"]);
   assert.equal(new Set(INTERVAL_SOUNDS.map((sound) => sound.symbol)).size, 3);
+});
+
+test("offers ordered soft, medium and loud volume levels", () => {
+  assert.deepEqual(VOLUME_LEVELS.map((level) => level.id), ["soft", "medium", "loud"]);
+  assert.ok(VOLUME_LEVELS[0].multiplier < VOLUME_LEVELS[1].multiplier);
+  assert.ok(VOLUME_LEVELS[1].multiplier < VOLUME_LEVELS[2].multiplier);
 });

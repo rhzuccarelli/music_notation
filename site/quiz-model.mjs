@@ -34,9 +34,15 @@ export const INTERVAL_LEVELS = {
 };
 
 export const INTERVAL_SOUNDS = [
-  { id: "pure", label: "Pure sine", symbol: "∿", oscillator: "sine", duration: 0.62, attack: 0.018, volume: 0.22 },
-  { id: "warm", label: "Warm triangle", symbol: "△", oscillator: "triangle", duration: 0.68, attack: 0.024, volume: 0.16 },
-  { id: "bright", label: "Bright square", symbol: "⊓", oscillator: "square", duration: 0.5, attack: 0.012, volume: 0.075 }
+  { id: "pure", label: "Pure sine", symbol: "∿", oscillator: "sine", duration: 0.72, attack: 0.02, volume: 0.2, filterFrequency: 8000 },
+  { id: "warm", label: "Warm triangle", symbol: "△", oscillator: "triangle", duration: 0.78, attack: 0.028, volume: 0.17, filterFrequency: 3200 },
+  { id: "bright", label: "Bright square", symbol: "⊓", oscillator: "square", duration: 0.6, attack: 0.012, volume: 0.105, filterFrequency: 1800 }
+];
+
+export const VOLUME_LEVELS = [
+  { id: "soft", label: "Soft", symbol: "·", multiplier: 0.65 },
+  { id: "medium", label: "Medium", symbol: "••", multiplier: 1 },
+  { id: "loud", label: "Loud", symbol: "•••", multiplier: 1.65 }
 ];
 
 export const RHYTHM_PATTERNS = [

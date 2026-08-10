@@ -221,6 +221,7 @@ const html = `<!doctype html>
             <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
             <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="intermediate">Intermediate</option><option value="all">All intervals</option></select></label>
             <fieldset class="sound-picker"><legend>Sound</legend><div class="sound-segments" id="interval-sounds" aria-label="Interval sound"></div></fieldset>
+            <fieldset class="sound-picker"><legend>Volume</legend><div class="sound-segments volume-segments" id="interval-volume" aria-label="Interval volume"></div></fieldset>
           </div>
           <div class="quiz-stage">
             <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>
@@ -236,6 +237,7 @@ const html = `<!doctype html>
         <div class="quiz-stage rhythm-quiz-stage">
           <div class="rhythm-playback-controls">
             <fieldset class="sound-picker"><legend>Sound</legend><div class="sound-segments" id="rhythm-sounds" aria-label="Rhythm sound"></div></fieldset>
+            <fieldset class="sound-picker"><legend>Volume</legend><div class="sound-segments volume-segments" id="rhythm-volume" aria-label="Rhythm volume"></div></fieldset>
             <button class="btn btn-primary" id="play-rhythm-question">Play rhythm</button>
           </div>
           <div class="notation-options" id="rhythm-options"></div>
