@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.4",
+    "date": "2026-08-10",
+    "title": "Reliable sound and volume controls",
+    "summary": "Uses native segmented radio controls, adds soft, medium and loud levels, and improves interval timbre separation."
+  },
+  {
     "version": "0.6.3",
     "date": "2026-08-10",
     "title": "Unfolded sound selectors",
