@@ -13,6 +13,13 @@ let tapState = "idle";
 let tapStart = 0;
 let tapTimes = [];
 
+function setFeedback(target, text, state = "neutral") {
+  target.textContent = text;
+  target.classList.remove("is-correct", "is-wrong");
+  if (state === "correct") target.classList.add("is-correct");
+  if (state === "wrong") target.classList.add("is-wrong");
+}
+
 async function ensureAudio() {
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   audioContext ??= new AudioContextClass();
@@ -68,6 +75,7 @@ function newIntervalQuestion() {
   answers.innerHTML = choices.map((choice) => `<button class="answer-button" data-semitones="${choice.semitones}">${choice.label}</button>`).join("");
   $$("#interval-answers .answer-button").forEach((button) => button.addEventListener("click", answerInterval));
   $("#interval-prompt").textContent = `${mode === "melodic" ? "In sequence" : "Together"} · choose the interval`;
+  setFeedback($("#interval-feedback"), `Score ${intervalScore.correct} / ${intervalScore.total}`);
 }
 
 async function playInterval() {
@@ -88,7 +96,7 @@ function answerInterval(event) {
     if (Number(button.dataset.semitones) === intervalQuestion.semitones) button.classList.add("correct");
   });
   if (!correct) event.currentTarget.classList.add("wrong");
-  $("#interval-feedback").textContent = `${correct ? "Correct" : `That was ${intervalQuestion.label}`} · score ${intervalScore.correct} / ${intervalScore.total}`;
+  setFeedback($("#interval-feedback"), `${correct ? `Correct · ${intervalQuestion.label}` : `Not quite · ${intervalQuestion.label}`} · score ${intervalScore.correct} / ${intervalScore.total}`, correct ? "correct" : "wrong");
   setTimeout(() => { newIntervalQuestion(); playInterval(); }, 900);
 }
 
@@ -119,6 +127,7 @@ async function newRhythmQuestion() {
     await renderRhythm(button.querySelector("div"), RHYTHM_PATTERNS[Number(button.dataset.pattern)], true);
     button.addEventListener("click", answerRhythm);
   }
+  setFeedback($("#rhythm-feedback"), `Score ${rhythmScore.correct} / ${rhythmScore.total}`);
 }
 
 async function playRhythm(pattern = RHYTHM_PATTERNS[rhythmQuestion]) {
@@ -140,14 +149,14 @@ function answerRhythm(event) {
     if (Number(button.dataset.pattern) === rhythmQuestion) button.classList.add("correct");
   });
   if (!correct) event.currentTarget.classList.add("wrong");
-  $("#rhythm-feedback").textContent = `${correct ? "Correct" : "Not this time"} · score ${rhythmScore.correct} / ${rhythmScore.total}`;
+  setFeedback($("#rhythm-feedback"), `${correct ? "Correct" : "Not quite"} · score ${rhythmScore.correct} / ${rhythmScore.total}`, correct ? "correct" : "wrong");
   setTimeout(() => newRhythmQuestion(), 1000);
 }
 
 async function newTapQuestion() {
   tapQuestion = chooseDifferentIndex(RHYTHM_PATTERNS.length, tapQuestion);
   await renderRhythm($("#tap-question-notation"), RHYTHM_PATTERNS[tapQuestion]);
-  $("#tap-feedback").textContent = "Your score will appear here";
+  setFeedback($("#tap-feedback"), "Your score will appear here");
 }
 
 async function startTapQuiz() {
@@ -189,13 +198,17 @@ function finishTapQuiz() {
   const slotSeconds = 0.6 / 4;
   const answer = [...new Set(tapTimes.map((time) => Math.max(0, Math.min(15, Math.round(time / slotSeconds)))))];
   const score = scoreTappedRhythm(RHYTHM_PATTERNS[tapQuestion], answer);
-  $("#tap-feedback").textContent = `${score}% match · ${score >= 80 ? "Nicely locked" : score >= 55 ? "Nearly there" : "Try it once more"}`;
+  setFeedback($("#tap-feedback"), `${score}% match · ${score >= 80 ? "Nicely locked" : score >= 55 ? "Nearly there" : "Try it once more"}`, score >= 80 ? "correct" : score < 55 ? "wrong" : "neutral");
   if (score >= 80) setTimeout(() => newTapQuestion(), 1200);
 }
 
 $$('.quiz-tab').forEach((tab) => tab.addEventListener("click", () => {
   $$(".quiz-tab").forEach((item) => { item.classList.toggle("active", item === tab); item.setAttribute("aria-selected", String(item === tab)); });
   $$(".quiz-panel").forEach((panel) => { const active = panel.dataset.quizPanel === tab.dataset.quizTab; panel.classList.toggle("active", active); panel.hidden = !active; });
+}));
+$$('[data-open-quiz]').forEach((link) => link.addEventListener("click", () => {
+  const tab = $(`[data-quiz-tab="${link.dataset.openQuiz}"]`);
+  if (tab) tab.click();
 }));
 $("#play-interval").addEventListener("click", playInterval);
 $("#interval-level").addEventListener("change", newIntervalQuestion);
