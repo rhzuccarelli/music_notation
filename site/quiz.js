@@ -12,6 +12,8 @@ let tapQuestion = 0;
 let tapState = "idle";
 let tapStart = 0;
 let tapTimes = [];
+let intervalSoundId = "pure";
+let rhythmSoundId = "click";
 
 function setFeedback(target, text, state = "neutral") {
   target.textContent = text;
@@ -24,6 +26,14 @@ async function ensureAudio() {
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   audioContext ??= new AudioContextClass();
   if (audioContext.state !== "running") await audioContext.resume();
+}
+
+function buildSoundPicker(target, sounds, selectedId, onSelect) {
+  target.innerHTML = sounds.map((sound) => `<button type="button" data-sound="${sound.id}" aria-pressed="${sound.id === selectedId}"><strong>${sound.symbol}</strong><span>${sound.label}</span></button>`).join("");
+  target.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
+    target.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+    onSelect(button.dataset.sound);
+  }));
 }
 
 function tone(midi, at, soundId = "pure") {
@@ -85,9 +95,8 @@ async function playInterval() {
   await ensureAudio();
   if (!intervalQuestion) newIntervalQuestion();
   const start = audioContext.currentTime + 0.06;
-  const soundId = $("#interval-sound").value;
-  tone(intervalQuestion.root, start, soundId);
-  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.7 : start, soundId);
+  tone(intervalQuestion.root, start, intervalSoundId);
+  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.7 : start, intervalSoundId);
 }
 
 function answerInterval(event) {
@@ -140,8 +149,7 @@ async function playRhythm(pattern = RHYTHM_PATTERNS[rhythmQuestion]) {
   const start = audioContext.currentTime + 0.08;
   for (let i = 0; i < 4; i += 1) metronome(start + i * beat, i === 0);
   const rhythmStart = start + 4 * beat;
-  const soundId = $("#rhythm-sound").value;
-  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4, soundId));
+  pattern.forEach((slot) => percussion(rhythmStart + slot * beat / 4, rhythmSoundId));
 }
 
 function answerRhythm(event) {
@@ -227,14 +235,8 @@ document.addEventListener("keydown", (event) => {
   recordQuizTap();
 });
 
-$("#interval-sound").innerHTML = INTERVAL_SOUNDS.map((sound) => `<option value="${sound.id}">${sound.symbol} ${sound.label}</option>`).join("");
-$("#interval-sound").addEventListener("change", (event) => {
-  $("#interval-wave-symbol").textContent = INTERVAL_SOUNDS.find((sound) => sound.id === event.target.value)?.symbol ?? "∿";
-});
+buildSoundPicker($("#interval-sounds"), INTERVAL_SOUNDS, intervalSoundId, (soundId) => { intervalSoundId = soundId; });
 newIntervalQuestion();
-$("#rhythm-sound").innerHTML = RHYTHM_SOUNDS.map((sound) => `<option value="${sound.id}">${sound.symbol} ${sound.label}</option>`).join("");
-$("#rhythm-sound").addEventListener("change", (event) => {
-  $("#rhythm-wave-symbol").textContent = RHYTHM_SOUNDS.find((sound) => sound.id === event.target.value)?.symbol ?? "△";
-});
+buildSoundPicker($("#rhythm-sounds"), RHYTHM_SOUNDS, rhythmSoundId, (soundId) => { rhythmSoundId = soundId; });
 newRhythmQuestion();
 newTapQuestion();
