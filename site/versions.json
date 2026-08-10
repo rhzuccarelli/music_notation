@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.6.3",
+    "date": "2026-08-10",
+    "title": "Unfolded sound selectors",
+    "summary": "Replaces the interval and rhythm sound dropdowns with always-visible segmented waveform buttons."
+  },
+  {
     "version": "0.6.2",
     "date": "2026-08-10",
     "title": "Selectable interval timbres",

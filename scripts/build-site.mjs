@@ -220,7 +220,7 @@ const html = `<!doctype html>
           <div class="quiz-controls interval-controls">
             <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
             <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="intermediate">Intermediate</option><option value="all">All intervals</option></select></label>
-            <div class="interval-sound-control"><span class="rhythm-wave-symbol" id="interval-wave-symbol" aria-hidden="true">∿</span><label>Sound<select id="interval-sound" aria-label="Interval sound"></select></label></div>
+            <fieldset class="sound-picker"><legend>Sound</legend><div class="sound-segments" id="interval-sounds" aria-label="Interval sound"></div></fieldset>
           </div>
           <div class="quiz-stage">
             <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>
@@ -235,8 +235,7 @@ const html = `<!doctype html>
         <div class="quiz-intro"><p class="eyebrow">Rhythm dictation</p><h2>Hear it. Find it.</h2><p>Listen to one bar, then choose the notation that matches.</p></div>
         <div class="quiz-stage rhythm-quiz-stage">
           <div class="rhythm-playback-controls">
-            <span class="rhythm-wave-symbol" id="rhythm-wave-symbol" aria-hidden="true">△</span>
-            <label>Sound<select id="rhythm-sound" aria-label="Rhythm sound"></select></label>
+            <fieldset class="sound-picker"><legend>Sound</legend><div class="sound-segments" id="rhythm-sounds" aria-label="Rhythm sound"></div></fieldset>
             <button class="btn btn-primary" id="play-rhythm-question">Play rhythm</button>
           </div>
           <div class="notation-options" id="rhythm-options"></div>
