@@ -5,13 +5,30 @@ export const INTERVAL_LEVELS = {
     { semitones: 7, label: "Perfect 5th" },
     { semitones: 12, label: "Octave" }
   ],
-  expanded: [
+  intermediate: [
     { semitones: 0, label: "Unison" },
     { semitones: 2, label: "Major 2nd" },
+    { semitones: 3, label: "Minor 3rd" },
     { semitones: 4, label: "Major 3rd" },
     { semitones: 5, label: "Perfect 4th" },
     { semitones: 7, label: "Perfect 5th" },
+    { semitones: 8, label: "Minor 6th" },
     { semitones: 9, label: "Major 6th" },
+    { semitones: 12, label: "Octave" }
+  ],
+  all: [
+    { semitones: 0, label: "Unison" },
+    { semitones: 1, label: "Minor 2nd" },
+    { semitones: 2, label: "Major 2nd" },
+    { semitones: 3, label: "Minor 3rd" },
+    { semitones: 4, label: "Major 3rd" },
+    { semitones: 5, label: "Perfect 4th" },
+    { semitones: 6, label: "Tritone" },
+    { semitones: 7, label: "Perfect 5th" },
+    { semitones: 8, label: "Minor 6th" },
+    { semitones: 9, label: "Major 6th" },
+    { semitones: 10, label: "Minor 7th" },
+    { semitones: 11, label: "Major 7th" },
     { semitones: 12, label: "Octave" }
   ]
 };

@@ -1,4 +1,4 @@
-import { cp, mkdir, rm, writeFile, glob } from "node:fs/promises";
+import { cp, mkdir, rm, writeFile, readFile, glob } from "node:fs/promises";
 import { renderScore } from "./render.mjs";
 
 const PAGES_BASE = "https://rhzuccarelli.github.io/music_notation";
@@ -24,6 +24,8 @@ await cp("site/style.css", "dist/style.css");
 await cp("site/quiz.js", "dist/quiz.js");
 await cp("site/quiz-model.mjs", "dist/quiz-model.mjs");
 await cp("site/quiz.css", "dist/quiz.css");
+await cp("site/landing.css", "dist/landing.css");
+await cp("site/versions.json", "dist/versions.json");
 await cp("node_modules/verovio/dist/verovio.mjs", "dist/vendor/verovio.mjs");
 await cp("node_modules/verovio/dist/verovio-module.mjs", "dist/vendor/verovio-module.mjs");
 
@@ -87,6 +89,15 @@ const cards = entries.map((score) => `
     <nav><a href="${score.musicxml}">MusicXML</a><a href="${score.svg}">SVG</a><a href="${score.png}">PNG</a><a href="scores/${score.id}/metadata.json">Metadata</a></nav>
   </article>`).join("");
 
+const versions = JSON.parse(await readFile("site/versions.json", "utf8"));
+const currentVersion = versions[0];
+const versionCards = versions.map((version) => `
+  <article class="version-entry">
+    <div><strong>v${version.version}</strong><time datetime="${version.date}">${version.date}</time></div>
+    <h3>${version.title}</h3>
+    <p>${version.summary}</p>
+  </article>`).join("");
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -98,17 +109,29 @@ const html = `<!doctype html>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="quiz.css">
+  <link rel="stylesheet" href="landing.css">
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="#top" aria-label="Music Notation Sketchbook home"><span class="logo-square"></span><span class="brand-name">Music Notation</span><span class="logo-tag">Sketchbook</span></a>
-    <nav class="header-actions" aria-label="Primary navigation"><a href="#rhythm-capture">Capture</a><a href="#ear-training">Quizzes</a><a href="#scores">Scores</a></nav>
+    <nav class="header-actions" aria-label="Primary navigation"><a href="#tools">Tools</a><a href="#scores">Scores</a><a href="#versions">Versions</a></nav>
   </header>
   <main id="top">
-    <section class="hero">
-      <p class="eyebrow">Browser instrument / 01</p>
-      <h1>Catch a rhythm<br>before it escapes.</h1>
-      <p class="hero-copy">Tap a pattern against the metronome. The sketchbook quantizes it and engraves the result as musical notation.</p>
+    <section class="hero landing-hero">
+      <p class="eyebrow">Music notation sketchbook / v${currentVersion.version}</p>
+      <h1>Music,<br>made visible.</h1>
+      <p class="hero-copy">Capture ideas, train your ear, practise rhythm and keep every musical sketch in one place.</p>
+    </section>
+
+    <section class="tool-launcher" id="tools" aria-labelledby="tools-title">
+      <div class="section-heading"><span id="tools-title"><i></i>Choose a tool</span><small>05 functions</small></div>
+      <nav class="launcher-grid" aria-label="Music tools">
+        <a class="launcher-card" href="#rhythm-capture"><span class="launcher-number">01</span><span class="tool-icon icon-capture" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Rhythm capture</strong><small>Tap an idea and engrave it</small></a>
+        <a class="launcher-card" href="#ear-training" data-open-quiz="intervals"><span class="launcher-number">02</span><span class="tool-icon icon-interval" aria-hidden="true"><i></i><i></i></span><strong>Intervals</strong><small>Train melodic and harmonic distance</small></a>
+        <a class="launcher-card" href="#ear-training" data-open-quiz="hear-rhythm"><span class="launcher-number">03</span><span class="tool-icon icon-hear" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Hear rhythm</strong><small>Match sound to notation</small></a>
+        <a class="launcher-card" href="#ear-training" data-open-quiz="tap-rhythm"><span class="launcher-number">04</span><span class="tool-icon icon-tap" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>Tap rhythm</strong><small>Read notation and play it back</small></a>
+        <a class="launcher-card" href="#scores"><span class="launcher-number">05</span><span class="tool-icon icon-library" aria-hidden="true"><i></i><i></i><i></i></span><strong>Score library</strong><small>Browse every musical sketch</small></a>
+      </nav>
     </section>
 
     <section class="tool" id="rhythm-capture" aria-labelledby="rhythm-title">
@@ -160,7 +183,7 @@ const html = `<!doctype html>
         <div class="quiz-workspace">
           <div class="quiz-controls">
             <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
-            <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="expanded">Expanded</option></select></label>
+            <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="intermediate">Intermediate</option><option value="all">All intervals</option></select></label>
           </div>
           <div class="quiz-stage">
             <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>
@@ -195,8 +218,12 @@ const html = `<!doctype html>
     <section class="scores" id="scores">
       <div class="section-heading"><span><i></i>Score library</span><small>${entries.length} sketches</small></div>
       <div class="score-list">${cards}</div>
-      <footer><span>Music Notation Sketchbook</span><nav><a href="chat-manifest.json">Chat manifest</a><a href="manifest.json">Full manifest</a></nav></footer>
     </section>
+    <section class="versions" id="versions">
+      <div class="section-heading"><span><i></i>Version history</span><small>Current / v${currentVersion.version}</small></div>
+      <div class="version-list">${versionCards}</div>
+    </section>
+    <footer><span>Music Notation Sketchbook · v${currentVersion.version}</span><nav><a href="versions.json">Version data</a><a href="chat-manifest.json">Chat manifest</a><a href="manifest.json">Full manifest</a></nav></footer>
   </main>
   <script type="module" src="rhythm-capture.js"></script>
   <script type="module" src="quiz.js"></script>

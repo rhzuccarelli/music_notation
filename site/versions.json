@@ -1,0 +1,44 @@
+[
+  {
+    "version": "0.5.0",
+    "date": "2026-08-10",
+    "title": "Tool launcher and complete intervals",
+    "summary": "Adds the functionality landing page, complete chromatic interval training, clearer quiz feedback and public version history."
+  },
+  {
+    "version": "0.4.1",
+    "date": "2026-08-10",
+    "title": "Clearer quiz audio and notation",
+    "summary": "Separates count-in and rhythm timbres, raises interval volume and introduces conventional one-line rhythm engraving."
+  },
+  {
+    "version": "0.4.0",
+    "date": "2026-08-10",
+    "title": "Training quizzes",
+    "summary": "Introduces interval recognition, rhythm dictation and rhythm-reading tap exercises with responsive layouts."
+  },
+  {
+    "version": "0.3.0",
+    "date": "2026-08-10",
+    "title": "Conventional rhythm transcription",
+    "summary": "Infers musical note values from tap spacing and consolidates rests instead of printing every empty grid cell."
+  },
+  {
+    "version": "0.2.1",
+    "date": "2026-08-10",
+    "title": "Mobile metronome audio",
+    "summary": "Unlocks Web Audio reliably on mobile and adds an audible accented metronome with a sound control."
+  },
+  {
+    "version": "0.2.0",
+    "date": "2026-08-10",
+    "title": "Interactive rhythm capture",
+    "summary": "Adds tempo, count-in, touch tapping, quantization, playback, live Verovio engraving and MusicXML download."
+  },
+  {
+    "version": "0.1.0",
+    "date": "2026-08-09",
+    "title": "Notation sketchbook",
+    "summary": "Establishes structured musical sketches, automated MusicXML, SVG and PNG rendering, manifests and the score gallery."
+  }
+]
