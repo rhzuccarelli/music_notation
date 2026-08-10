@@ -1,5 +1,6 @@
 import createVerovioModule from "./vendor/verovio-module.mjs";
 import { VerovioToolkit } from "./vendor/verovio.mjs";
+import { buildRhythmMusicXml } from "./rhythm-model.mjs";
 
 const $ = (selector) => document.querySelector(selector);
 const tempo = $("#tempo");
@@ -161,26 +162,9 @@ function finishPattern() {
     resultNote.textContent = `4/4 · ${grid.value === "16" ? "sixteenth" : "eighth"}-note grid · no taps captured`;
     return;
   }
-  musicXml = makeMusicXml(quantized, totalSlots, subdivisions);
+  musicXml = buildRhythmMusicXml({ attacks: quantized, totalSlots, subdivisions, tempo: Number(tempo.value) });
   renderNotation();
   resultNote.textContent = `4/4 · ${grid.value === "16" ? "sixteenth" : "eighth"}-note grid · ${quantized.length} quantized attacks`;
-}
-
-function makeMusicXml(attacks, totalSlots, subdivisions) {
-  const divisions = 4;
-  const duration = divisions / subdivisions;
-  const type = subdivisions === 4 ? "16th" : "eighth";
-  const attackSet = new Set(attacks);
-  const slotsPerBar = 4 * subdivisions;
-  const measures = [];
-  for (let slot = 0; slot < totalSlots; slot += slotsPerBar) {
-    const notes = Array.from({ length: slotsPerBar }, (_, offset) => attackSet.has(slot + offset)
-      ? `<note><pitch><step>C</step><octave>5</octave></pitch><duration>${duration}</duration><voice>1</voice><type>${type}</type><stem>up</stem><notehead>x</notehead></note>`
-      : `<note><rest/><duration>${duration}</duration><voice>1</voice><type>${type}</type></note>`).join("");
-    const attrs = slot === 0 ? `<attributes><divisions>${divisions}</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>percussion</sign><line>2</line></clef></attributes><direction placement="above"><direction-type><metronome><beat-unit>quarter</beat-unit><per-minute>${tempo.value}</per-minute></metronome></direction-type><sound tempo="${tempo.value}"/></direction>` : "";
-    measures.push(`<measure number="${measures.length + 1}">${attrs}${notes}</measure>`);
-  }
-  return `<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd"><score-partwise version="4.0"><work><work-title>Captured rhythm</work-title></work><part-list><score-part id="P1"><part-name>Rhythm</part-name></score-part></part-list><part id="P1">${measures.join("")}</part></score-partwise>`;
 }
 
 function renderNotation() {
