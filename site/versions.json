@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.7.0",
+    "date": "2026-08-11",
+    "title": "Editable songbooks and reliable downloads",
+    "summary": "Adds reversible sketch reordering and removal to A5 songbooks, strengthens PDF printing, and fixes Safari MusicXML downloads."
+  },
+  {
     "version": "0.6.4",
     "date": "2026-08-10",
     "title": "Reliable sound and volume controls",
