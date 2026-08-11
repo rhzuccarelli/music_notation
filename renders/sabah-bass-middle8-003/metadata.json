@@ -1,0 +1,17 @@
+{
+  "id": "sabah-bass-middle8-003",
+  "title": "Sabah bass middle eight 3 - opening up into D7",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-003.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-bass-middle8-003",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-bass-middle8-003/score.png",
+    "svg": "scores/sabah-bass-middle8-003/score.svg",
+    "musicxml": "scores/sabah-bass-middle8-003/score.musicxml"
+  }
+}

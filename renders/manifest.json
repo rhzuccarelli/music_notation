@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-11T05:15:42.617Z",
+  "generatedAt": "2026-08-11T06:43:12.594Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "scores": [
     {
@@ -137,6 +137,57 @@
         "png": "scores/instrument-layouts-demo/score.png",
         "svg": "scores/instrument-layouts-demo/score.svg",
         "musicxml": "scores/instrument-layouts-demo/score.musicxml"
+      }
+    },
+    {
+      "id": "sabah-bass-middle8-001",
+      "title": "Sabah bass middle eight 1 - simple roots",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-001.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-bass-middle8-001",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-001/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-bass-middle8-001/score.png",
+        "svg": "scores/sabah-bass-middle8-001/score.svg",
+        "musicxml": "scores/sabah-bass-middle8-001/score.musicxml"
+      }
+    },
+    {
+      "id": "sabah-bass-middle8-002",
+      "title": "Sabah bass middle eight 2 - small movement",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-002.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-bass-middle8-002",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-bass-middle8-002/score.png",
+        "svg": "scores/sabah-bass-middle8-002/score.svg",
+        "musicxml": "scores/sabah-bass-middle8-002/score.musicxml"
+      }
+    },
+    {
+      "id": "sabah-bass-middle8-003",
+      "title": "Sabah bass middle eight 3 - opening up into D7",
+      "tempo": 95,
+      "timeSignature": "4/4",
+      "formatVersion": 2,
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-003.json",
+      "page": "https://rhzuccarelli.github.io/music_notation/#sabah-bass-middle8-003",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.musicxml",
+      "relative": {
+        "png": "scores/sabah-bass-middle8-003/score.png",
+        "svg": "scores/sabah-bass-middle8-003/score.svg",
+        "musicxml": "scores/sabah-bass-middle8-003/score.musicxml"
       }
     },
     {

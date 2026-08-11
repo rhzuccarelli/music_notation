@@ -1,0 +1,17 @@
+{
+  "id": "sabah-bass-middle8-002",
+  "title": "Sabah bass middle eight 2 - small movement",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "formatVersion": 2,
+  "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-002.json",
+  "page": "https://rhzuccarelli.github.io/music_notation/#sabah-bass-middle8-002",
+  "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.png",
+  "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.svg",
+  "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-002/score.musicxml",
+  "relative": {
+    "png": "scores/sabah-bass-middle8-002/score.png",
+    "svg": "scores/sabah-bass-middle8-002/score.svg",
+    "musicxml": "scores/sabah-bass-middle8-002/score.musicxml"
+  }
+}
