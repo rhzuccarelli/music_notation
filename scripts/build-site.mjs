@@ -28,6 +28,8 @@ await cp("site/quiz.css", "dist/quiz.css");
 await cp("site/landing.css", "dist/landing.css");
 await cp("site/versions.json", "dist/versions.json");
 await cp("site/songbook.css", "dist/songbook.css");
+await cp("site/songbook.js", "dist/songbook.js");
+await cp("site/songbook-model.mjs", "dist/songbook-model.mjs");
 await cp("node_modules/verovio/dist/verovio.mjs", "dist/vendor/verovio.mjs");
 await cp("node_modules/verovio/dist/verovio-module.mjs", "dist/vendor/verovio-module.mjs");
 
@@ -88,7 +90,7 @@ const cards = entries.map((score) => `
     <h2>${score.title}</h2>
     <p>${score.tempo} BPM · ${score.timeSignature}</p>
     <a href="${score.svg}"><img src="${score.png}" alt="Notation for ${score.title}" loading="lazy"></a>
-    <nav><a href="${score.musicxml}">MusicXML</a><a href="${score.svg}">SVG</a><a href="${score.png}">PNG</a><a href="scores/${score.id}/metadata.json">Metadata</a></nav>
+    <nav><a href="${score.musicxml}" download="${score.id}.musicxml">MusicXML</a><a href="${score.svg}" download="${score.id}.svg">SVG</a><a href="${score.png}" download="${score.id}.png">PNG</a><a href="scores/${score.id}/metadata.json" download="${score.id}-metadata.json">Metadata</a></nav>
   </article>`).join("");
 
 const versions = JSON.parse(await readFile("site/versions.json", "utf8"));
@@ -115,13 +117,14 @@ const songbookCards = songbooks.map((song) => `
 
 function songbookHtml(song) {
   const ideas = song.scores.map((score, index) => `
-    <section class="idea-page">
-      <header><span>${song.title} / Idea ${String(index + 1).padStart(2, "0")}</span><span>${score.tempo} BPM · ${score.timeSignature}</span></header>
+    <section class="idea-page" data-sketch-id="${score.id}">
+      <div class="idea-actions" aria-label="Organize ${score.title}"><button type="button" data-action="up">↑ Move up</button><button type="button" data-action="down">↓ Move down</button><button type="button" data-action="remove">× Remove</button></div>
+      <header><span>${song.title} / <span data-idea-label>Idea ${String(index + 1).padStart(2, "0")}</span></span><span>${score.tempo} BPM · ${score.timeSignature}</span></header>
       <h2>${score.title}</h2>
       <figure><img src="../${score.relative.svg}" alt="Notation for ${score.title}"></figure>
-      <footer><span>Music Notation Sketchbook</span><span>${index + 1} / ${song.scores.length}</span></footer>
+      <footer><span>Music Notation Sketchbook</span><span data-page-number>${index + 1} / ${song.scores.length}</span></footer>
     </section>`).join("");
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${song.title} — A5 Songbook</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../songbook.css"></head><body><nav class="print-controls"><a href="../#songbooks">← Back to songbooks</a><button onclick="window.print()">Print / Save PDF</button></nav><main><section class="cover"><p>Music Notation Sketchbook</p><h1>${song.title}</h1><div><span>A5 songbook</span><span>${song.scores.length} musical ideas</span><span>v${currentVersion.version}</span></div></section>${ideas}</main></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${song.title} — A5 Songbook</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="../songbook.css"></head><body data-songbook-id="${song.id}"><nav class="print-controls"><a href="../#songbooks">← Back</a><div><button type="button" id="reset-songbook">Reset order</button><button type="button" id="print-songbook">Print / Save A5 PDF</button></div></nav><p class="editor-note">Reorder or remove sketches below. Changes stay on this device; source scores remain safe in the library.</p><main><section class="cover"><p>Music Notation Sketchbook</p><h1>${song.title}</h1><div><span>A5 songbook</span><span data-idea-count>${song.scores.length} musical ideas</span><span>v${currentVersion.version}</span></div></section>${ideas}</main><script type="module" src="../songbook.js"></script></body></html>`;
 }
 
 for (const song of songbooks) {
