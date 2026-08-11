@@ -1,0 +1,31 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-bass-middle8-002",
+  "title": "Sabah bass middle eight 2 - small movement",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Bm7", "Am7"],
+  "parts": [
+    {
+      "id": "bass",
+      "name": "Bass",
+      "instrument": "bassGuitar",
+      "measures": [
+        {
+          "events": [
+            { "type": "chord", "notes": ["B1"], "duration": 8 },
+            { "type": "rest", "duration": 4 },
+            { "type": "chord", "notes": ["F#2"], "duration": 4 }
+          ]
+        },
+        {
+          "events": [
+            { "type": "chord", "notes": ["A1"], "duration": 8 },
+            { "type": "rest", "duration": 4 },
+            { "type": "chord", "notes": ["E2"], "duration": 4 }
+          ]
+        }
+      ]
+    }
+  ]
+}
