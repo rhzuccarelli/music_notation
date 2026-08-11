@@ -1,6 +1,6 @@
 {
   "name": "music-notation-sketchbook",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.17.1",

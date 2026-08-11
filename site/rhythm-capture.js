@@ -197,10 +197,13 @@ function clearPattern() {
 }
 
 function downloadMusicXml() {
+  if (!musicXml) return;
   const url = URL.createObjectURL(new Blob([musicXml], { type: "application/vnd.recordare.musicxml+xml" }));
   const link = document.createElement("a");
   link.href = url;
   link.download = "captured-rhythm.musicxml";
+  document.body.append(link);
   link.click();
-  URL.revokeObjectURL(url);
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
