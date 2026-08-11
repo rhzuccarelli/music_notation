@@ -1,0 +1,39 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-bass-middle8-003",
+  "title": "Sabah bass middle eight 3 - opening up into D7",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Bm7", "Am7", "D7"],
+  "parts": [
+    {
+      "id": "bass",
+      "name": "Bass",
+      "instrument": "bassGuitar",
+      "measures": [
+        {
+          "events": [
+            { "type": "chord", "notes": ["B1"], "duration": 4 },
+            { "type": "chord", "notes": ["D2"], "duration": 4 },
+            { "type": "chord", "notes": ["F#2"], "duration": 8 }
+          ]
+        },
+        {
+          "events": [
+            { "type": "chord", "notes": ["A1"], "duration": 4 },
+            { "type": "chord", "notes": ["C2"], "duration": 4 },
+            { "type": "chord", "notes": ["E2"], "duration": 8 }
+          ]
+        },
+        {
+          "events": [
+            { "type": "chord", "notes": ["D2"], "duration": 4 },
+            { "type": "chord", "notes": ["A1"], "duration": 4 },
+            { "type": "chord", "notes": ["C2"], "duration": 4 },
+            { "type": "chord", "notes": ["F#2"], "duration": 4 }
+          ]
+        }
+      ]
+    }
+  ]
+}
