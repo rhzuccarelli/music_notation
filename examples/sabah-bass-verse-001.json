@@ -1,0 +1,38 @@
+{
+  "formatVersion": 2,
+  "id": "sabah-bass-verse-001",
+  "title": "Sabah bass verse — simple E pickup",
+  "tempo": 95,
+  "timeSignature": "4/4",
+  "harmony": ["Gmaj7", "Gmaj7", "Am7", "Am7"],
+  "parts": [
+    {
+      "id": "bass",
+      "name": "Bass",
+      "instrument": "bassGuitar",
+      "measures": [
+        {"events": [
+          {"type":"chord","notes":["G2"],"duration":4},
+          {"type":"rest","duration":4},
+          {"type":"chord","notes":["G2"],"duration":4},
+          {"type":"rest","duration":4}
+        ]},
+        {"events": [
+          {"type":"chord","notes":["G2"],"duration":8},
+          {"type":"rest","duration":6},
+          {"type":"chord","notes":["E2"],"duration":2}
+        ]},
+        {"events": [
+          {"type":"chord","notes":["A2"],"duration":4},
+          {"type":"rest","duration":12}
+        ]},
+        {"events": [
+          {"type":"chord","notes":["A2"],"duration":8},
+          {"type":"rest","duration":4},
+          {"type":"chord","notes":["E2"],"duration":2},
+          {"type":"chord","notes":["F#2"],"duration":2}
+        ]}
+      ]
+    }
+  ]
+}
