@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.7.1",
+    "date": "2026-08-11",
+    "title": "Combined interval playback and piano tone",
+    "summary": "Every interval now plays together and then in sequence, with a sustained piano-like sound added as the default."
+  },
+  {
     "version": "0.7.0",
     "date": "2026-08-11",
     "title": "Editable songbooks and reliable downloads",
