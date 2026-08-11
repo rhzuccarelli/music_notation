@@ -218,13 +218,12 @@ const html = `<!doctype html>
       </div>
 
       <div class="quiz-panel active" data-quiz-panel="intervals">
-        <div class="quiz-intro"><p class="eyebrow">Interval recognition</p><h2>Hear the distance.</h2><p>Listen to two notes, then identify the interval between them.</p></div>
+        <div class="quiz-intro"><p class="eyebrow">Interval recognition</p><h2>Hear the distance.</h2><p>Hear each interval together first, then immediately as two notes in sequence.</p></div>
         <div class="quiz-workspace">
           <div class="quiz-controls interval-controls">
-            <label>Playback<select id="interval-mode"><option value="mixed">Mixed</option><option value="melodic">In sequence</option><option value="harmonic">Together</option></select></label>
             <label>Level<select id="interval-level"><option value="foundation">Foundation</option><option value="intermediate">Intermediate</option><option value="all">All intervals</option></select></label>
-            <fieldset class="sound-picker"><legend>Sound</legend><div class="sound-segments" id="interval-sounds" aria-label="Interval sound"></div></fieldset>
             <fieldset class="sound-picker"><legend>Volume</legend><div class="sound-segments volume-segments" id="interval-volume" aria-label="Interval volume"></div></fieldset>
+            <fieldset class="sound-picker interval-sound-picker"><legend>Sound</legend><div class="sound-segments" id="interval-sounds" aria-label="Interval sound"></div></fieldset>
           </div>
           <div class="quiz-stage">
             <p class="quiz-prompt" id="interval-prompt">Press play and listen</p>

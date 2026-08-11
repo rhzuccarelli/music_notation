@@ -39,23 +39,29 @@ function selectedVolume(name) {
   return VOLUME_LEVELS.find((level) => level.id === id)?.multiplier ?? 1;
 }
 
-function tone(midi, at, soundId = "pure", volumeMultiplier = 1) {
+function tone(midi, at, soundId = "piano", volumeMultiplier = 1) {
   const sound = INTERVAL_SOUNDS.find((candidate) => candidate.id === soundId) ?? INTERVAL_SOUNDS[0];
   const frequency = 440 * 2 ** ((midi - 69) / 12);
-  const osc = audioContext.createOscillator();
   const gain = audioContext.createGain();
   const filter = audioContext.createBiquadFilter();
-  osc.type = sound.oscillator;
-  osc.frequency.value = frequency;
   filter.type = "lowpass";
   filter.frequency.value = sound.filterFrequency;
   filter.Q.value = 0.7;
   gain.gain.setValueAtTime(0.0001, at);
   gain.gain.exponentialRampToValueAtTime(sound.volume * volumeMultiplier, at + sound.attack);
   gain.gain.exponentialRampToValueAtTime(0.0001, at + sound.duration);
-  osc.connect(filter).connect(gain).connect(audioContext.destination);
-  osc.start(at);
-  osc.stop(at + sound.duration + 0.02);
+  filter.connect(gain).connect(audioContext.destination);
+  const partials = sound.partials ?? [{ ratio: 1, gain: 1 }];
+  partials.forEach((partial) => {
+    const osc = audioContext.createOscillator();
+    const partialGain = audioContext.createGain();
+    osc.type = sound.oscillator;
+    osc.frequency.value = frequency * partial.ratio;
+    partialGain.gain.value = partial.gain;
+    osc.connect(partialGain).connect(filter);
+    osc.start(at);
+    osc.stop(at + sound.duration + 0.02);
+  });
 }
 
 function percussion(at, soundId = "click", volumeMultiplier = 1) {
@@ -88,13 +94,11 @@ function metronome(at, accent = false) {
 function newIntervalQuestion() {
   const choices = INTERVAL_LEVELS[$("#interval-level").value];
   const interval = choices[Math.floor(Math.random() * choices.length)];
-  const selectedMode = $("#interval-mode").value;
-  const mode = selectedMode === "mixed" ? (Math.random() < 0.5 ? "melodic" : "harmonic") : selectedMode;
-  intervalQuestion = { ...interval, root: 48 + Math.floor(Math.random() * 12), mode };
+  intervalQuestion = { ...interval, root: 48 + Math.floor(Math.random() * 12) };
   const answers = $("#interval-answers");
   answers.innerHTML = choices.map((choice) => `<button class="answer-button" data-semitones="${choice.semitones}">${choice.label}</button>`).join("");
   $$("#interval-answers .answer-button").forEach((button) => button.addEventListener("click", answerInterval));
-  $("#interval-prompt").textContent = `${mode === "melodic" ? "In sequence" : "Together"} · choose the interval`;
+  $("#interval-prompt").textContent = "Together, then in sequence · choose the interval";
   setFeedback($("#interval-feedback"), `Score ${intervalScore.correct} / ${intervalScore.total}`);
 }
 
@@ -102,10 +106,14 @@ async function playInterval() {
   await ensureAudio();
   if (!intervalQuestion) newIntervalQuestion();
   const start = audioContext.currentTime + 0.06;
-  const soundId = selectedValue("interval-sound", "pure");
+  const soundId = selectedValue("interval-sound", "piano");
   const volume = selectedVolume("interval-volume");
+  // First demonstrate the harmonic interval, then repeat it melodically.
   tone(intervalQuestion.root, start, soundId, volume);
-  tone(intervalQuestion.root + intervalQuestion.semitones, intervalQuestion.mode === "melodic" ? start + 0.82 : start, soundId, volume);
+  tone(intervalQuestion.root + intervalQuestion.semitones, start, soundId, volume);
+  const melodicStart = start + 1.55;
+  tone(intervalQuestion.root, melodicStart, soundId, volume);
+  tone(intervalQuestion.root + intervalQuestion.semitones, melodicStart + 0.72, soundId, volume);
 }
 
 function answerInterval(event) {
@@ -236,7 +244,6 @@ $$('[data-open-quiz]').forEach((link) => link.addEventListener("click", () => {
 }));
 $("#play-interval").addEventListener("click", playInterval);
 $("#interval-level").addEventListener("change", newIntervalQuestion);
-$("#interval-mode").addEventListener("change", newIntervalQuestion);
 $("#play-rhythm-question").addEventListener("click", () => playRhythm());
 $("#start-tap-quiz").addEventListener("click", startTapQuiz);
 $("#quiz-tap-pad").addEventListener("pointerdown", recordQuizTap);
@@ -246,7 +253,7 @@ document.addEventListener("keydown", (event) => {
   recordQuizTap();
 });
 
-buildSegmentPicker($("#interval-sounds"), INTERVAL_SOUNDS, "interval-sound", "pure");
+buildSegmentPicker($("#interval-sounds"), INTERVAL_SOUNDS, "interval-sound", "piano");
 buildSegmentPicker($("#interval-volume"), VOLUME_LEVELS, "interval-volume", "medium");
 newIntervalQuestion();
 buildSegmentPicker($("#rhythm-sounds"), RHYTHM_SOUNDS, "rhythm-sound", "click");

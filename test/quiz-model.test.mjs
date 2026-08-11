@@ -32,9 +32,11 @@ test("offers three distinct rhythm sounds from short to sustained", () => {
   assert.ok(RHYTHM_SOUNDS[1].duration < RHYTHM_SOUNDS[2].duration);
 });
 
-test("offers three distinct pitched interval timbres", () => {
-  assert.deepEqual(INTERVAL_SOUNDS.map((sound) => sound.oscillator), ["sine", "triangle", "square"]);
-  assert.equal(new Set(INTERVAL_SOUNDS.map((sound) => sound.symbol)).size, 3);
+test("offers a sustained piano-like sound and three oscillator timbres", () => {
+  assert.deepEqual(INTERVAL_SOUNDS.map((sound) => sound.id), ["piano", "pure", "warm", "bright"]);
+  assert.ok(INTERVAL_SOUNDS[0].duration > 1);
+  assert.ok(INTERVAL_SOUNDS[0].partials.length >= 3);
+  assert.equal(new Set(INTERVAL_SOUNDS.map((sound) => sound.symbol)).size, 4);
 });
 
 test("offers ordered soft, medium and loud volume levels", () => {
