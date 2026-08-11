@@ -34,6 +34,7 @@ export const INTERVAL_LEVELS = {
 };
 
 export const INTERVAL_SOUNDS = [
+  { id: "piano", label: "Soft piano", symbol: "♩", oscillator: "sine", duration: 1.45, attack: 0.008, volume: 0.18, filterFrequency: 4200, partials: [{ ratio: 1, gain: 1 }, { ratio: 2, gain: 0.3 }, { ratio: 3, gain: 0.11 }] },
   { id: "pure", label: "Pure sine", symbol: "∿", oscillator: "sine", duration: 0.72, attack: 0.02, volume: 0.2, filterFrequency: 8000 },
   { id: "warm", label: "Warm triangle", symbol: "△", oscillator: "triangle", duration: 0.78, attack: 0.028, volume: 0.17, filterFrequency: 3200 },
   { id: "bright", label: "Bright square", symbol: "⊓", oscillator: "square", duration: 0.6, attack: 0.012, volume: 0.105, filterFrequency: 1800 }
