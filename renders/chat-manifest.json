@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-11T06:43:12.594Z",
+  "generatedAt": "2026-08-11T06:51:40.334Z",
   "baseUrl": "https://rhzuccarelli.github.io/music_notation",
   "byId": {
     "cage-chorus-rhodes-piano-003": {
@@ -79,6 +79,27 @@
       "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.svg",
       "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-middle8-003/score.musicxml",
       "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-middle8-003.json"
+    },
+    "sabah-bass-verse-002": {
+      "title": "Sabah bass verse — D E pickup",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-002/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-002/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-002/score.musicxml",
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-verse-002.json"
+    },
+    "sabah-bass-verse-003": {
+      "title": "Sabah bass verse — pocket with pickups",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-003/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-003/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-003/score.musicxml",
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-verse-003.json"
+    },
+    "sabah-bass-verse-001": {
+      "title": "Sabah bass verse — simple E pickup",
+      "png": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-001/score.png",
+      "svg": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-001/score.svg",
+      "musicxml": "https://rhzuccarelli.github.io/music_notation/scores/sabah-bass-verse-001/score.musicxml",
+      "source": "https://github.com/rhzuccarelli/music_notation/blob/main/examples/sabah-bass-verse-001.json"
     },
     "sabah-chat-winds-002": {
       "title": "Sabah chat test — trumpet G-A-G with tenor answer",
