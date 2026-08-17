@@ -1,0 +1,73 @@
+{
+  "formatVersion": 2,
+  "id": "cage-chorus-rhodes-piano-004",
+  "title": "Cage chorus — anticipated Rhodes + piano v004",
+  "tempo": 110,
+  "timeSignature": "4/4",
+  "keyFifths": 3,
+  "harmony": ["Bm7", "Dmaj7", "F#m7", "E7"],
+  "parts": [
+    {
+      "id": "rhodes",
+      "name": "Rhodes",
+      "instrument": "piano",
+      "measures": [
+        {
+          "treble": [
+            {"type":"chord","notes":["A3","D4","F#4"],"duration":12},
+            {"type":"rest","duration":2},
+            {"type":"chord","notes":["C#4","F#4"],"duration":2}
+          ],
+          "bass": [
+            {"type":"chord","notes":["B2","F#3"],"duration":8},
+            {"type":"rest","duration":6},
+            {"type":"chord","notes":["D3","A3"],"duration":2}
+          ]
+        },
+        {
+          "treble": [
+            {"type":"chord","notes":["C#4","F#4"],"duration":12},
+            {"type":"rest","duration":4}
+          ],
+          "bass": [
+            {"type":"chord","notes":["D3","A3"],"duration":8},
+            {"type":"rest","duration":8}
+          ]
+        },
+        {
+          "treble": [
+            {"type":"chord","notes":["A3","C#4","E4"],"duration":12},
+            {"type":"rest","duration":2},
+            {"type":"chord","notes":["G#3","D4","F#4"],"duration":2}
+          ],
+          "bass": [
+            {"type":"chord","notes":["F#2","C#3"],"duration":8},
+            {"type":"rest","duration":6},
+            {"type":"chord","notes":["E2","B2"],"duration":2}
+          ]
+        },
+        {
+          "treble": [
+            {"type":"chord","notes":["G#3","D4","F#4"],"duration":12},
+            {"type":"rest","duration":4}
+          ],
+          "bass": [
+            {"type":"chord","notes":["E2","B2"],"duration":8},
+            {"type":"rest","duration":8}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "piano",
+      "name": "Piano",
+      "instrument": "piano",
+      "measures": [
+        {"treble":[{"type":"rest","duration":6},{"type":"chord","notes":["D5","F#5"],"duration":2},{"type":"rest","duration":8}],"bass":[{"type":"rest","duration":16}]},
+        {"treble":[{"type":"rest","duration":8},{"type":"rest","duration":2},{"type":"chord","notes":["C#5","F#5"],"duration":2},{"type":"rest","duration":4}],"bass":[{"type":"rest","duration":16}]},
+        {"treble":[{"type":"rest","duration":6},{"type":"chord","notes":["C#5","E5"],"duration":2},{"type":"rest","duration":8}],"bass":[{"type":"rest","duration":16}]},
+        {"treble":[{"type":"rest","duration":8},{"type":"rest","duration":2},{"type":"chord","notes":["D5","F#5"],"duration":2},{"type":"rest","duration":4}],"bass":[{"type":"rest","duration":16}]}
+      ]
+    }
+  ]
+}
