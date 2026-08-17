@@ -54,8 +54,8 @@ function tuningXml(strings) {
   return strings.map((p,i)=>{const x=pitchFromMidi(midi(p));return `<staff-tuning line="${i+1}"><tuning-step>${x.step}</tuning-step>${x.alter?`<tuning-alter>${x.alter}</tuning-alter>`:""}<tuning-octave>${x.octave}</tuning-octave></staff-tuning>`}).join("");
 }
 
-function attributes(inst) {
-  const base='<divisions>4</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time>';
+function attributes(inst, keyFifths=0) {
+  const base=`<divisions>4</divisions><key><fifths>${keyFifths}</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time>`;
   if (inst.layout==="piano") return `<attributes>${base}<staves>2</staves><clef number="1"><sign>G</sign><line>2</line></clef><clef number="2"><sign>F</sign><line>4</line></clef></attributes>`;
   if (inst.layout==="tab") return `<attributes>${base}<staves>2</staves><clef number="1"><sign>${inst===INSTRUMENTS.bassGuitar?"F":"G"}</sign><line>${inst===INSTRUMENTS.bassGuitar?4:2}</line></clef><clef number="2"><sign>TAB</sign><line>5</line></clef><staff-details number="2"><staff-lines>${inst.strings.length}</staff-lines>${tuningXml(inst.strings)}</staff-details><transpose><chromatic>0</chromatic><octave-change>-1</octave-change></transpose></attributes>`;
   const tr=inst.transpose?`<transpose><diatonic>${inst.transpose[0]}</diatonic><chromatic>${inst.transpose[1]}</chromatic>${inst.transpose[2]?`<octave-change>${inst.transpose[2]}</octave-change>`:""}</transpose>`:"";
@@ -65,7 +65,7 @@ function attributes(inst) {
 function partXml(part, score) {
   const inst=INSTRUMENTS[part.instrument];
   return part.measures.map((m,i)=>{
-    const a=i===0?attributes(inst):""; const tempo=i===0?`<direction><direction-type><words>♩ = ${score.tempo}</words></direction-type><sound tempo="${score.tempo}"/></direction>`:"";
+    const a=i===0?attributes(inst, score.keyFifths ?? 0):""; const tempo=i===0?`<direction><direction-type><words>♩ = ${score.tempo}</words></direction-type><sound tempo="${score.tempo}"/></direction>`:"";
     if(inst.layout==="piano") return `<measure number="${i+1}">${a}${tempo}${i===0||m.chord?harmony(m.chord||score.harmony[i]):""}${m.treble.map(e=>eventXml(e,{staff:1,voice:1})).join("")}<backup><duration>16</duration></backup>${m.bass.map(e=>eventXml(e,{staff:2,voice:2})).join("")}</measure>`;
     if(inst.layout==="tab") { const ev=m.events; return `<measure number="${i+1}">${a}${tempo}${harmony(m.chord||score.harmony[i])}${ev.map(e=>eventXml(e,{staff:1,voice:1,shift:inst.writtenShift})).join("")}<backup><duration>16</duration></backup>${ev.map(e=>eventXml(e,{staff:2,voice:2,shift:inst.writtenShift,tab:true,strings:inst.strings})).join("")}</measure>`; }
     return `<measure number="${i+1}">${a}${tempo}${harmony(m.chord||score.harmony[i])}${m.events.map(e=>eventXml(e,{shift:inst.writtenShift})).join("")}</measure>`;
